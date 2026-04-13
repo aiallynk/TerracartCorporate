@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Founder Section</title>
+  <desc id="desc">Leadership and vision</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c08457" />
+      <stop offset="100%" stop-color="#8b5e3c" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g)" />
+  <circle cx="1040" cy="120" r="140" fill="rgba(255,255,255,0.16)" />
+  <circle cx="190" cy="570" r="180" fill="rgba(255,255,255,0.12)" />
+  <rect x="120" y="150" width="960" height="400" rx="30" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" />
+  <text x="600" y="320" text-anchor="middle" fill="#fff" font-family="Space Grotesk, Arial" font-size="52" font-weight="700">Founder Section</text>
+  <text x="600" y="380" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="Space Grotesk, Arial" font-size="28">Leadership and vision</text>
+</svg>
