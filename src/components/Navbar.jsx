@@ -57,10 +57,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(255,255,255,0.2)] bg-[rgba(74,43,27,0.94)] backdrop-blur-xl transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(255,255,255,0.66)] bg-[rgba(255,255,255,0.58)] backdrop-blur-xl transition-all duration-300 ${
         scrolled
-          ? 'shadow-[0_12px_36px_rgba(27,14,7,0.45)]'
-          : 'shadow-[0_8px_24px_rgba(27,14,7,0.35)]'
+          ? 'shadow-[0_12px_36px_rgba(73,49,30,0.24)]'
+          : 'shadow-[0_8px_24px_rgba(73,49,30,0.18)]'
       }`}
     >
       <div
@@ -71,10 +71,10 @@ export default function Navbar() {
         <div className="relative flex items-center justify-start md:justify-center">
           <button
             type="button"
-            className={`focus-ring inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.34)] text-white shadow-[0_12px_28px_rgba(26,13,6,0.34)] backdrop-blur-2xl transition-all duration-300 md:hidden ${
+            className={`focus-ring inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.74)] text-[rgba(71,45,30,0.95)] shadow-[0_10px_24px_rgba(46,31,20,0.16)] backdrop-blur-2xl transition-all duration-300 md:hidden ${
               open
-                ? 'bg-[linear-gradient(150deg,rgba(255,255,255,0.32),rgba(255,255,255,0.1))]'
-                : 'bg-[linear-gradient(150deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06))]'
+                ? 'bg-[linear-gradient(150deg,rgba(255,255,255,0.9),rgba(249,242,235,0.72))]'
+                : 'bg-[linear-gradient(150deg,rgba(255,255,255,0.82),rgba(248,240,233,0.62))]'
             }`}
             onClick={() => setOpen((prev) => !prev)}
             aria-expanded={open}
@@ -132,9 +132,9 @@ export default function Navbar() {
             initial="hidden"
             animate="show"
             exit="exit"
-            className="overflow-hidden border-t border-[rgba(255,255,255,0.2)] bg-[rgba(67,38,24,0.88)] px-3 pb-3 pt-2 md:hidden"
+            className="overflow-hidden border-t border-[rgba(255,255,255,0.66)] bg-[rgba(255,255,255,0.55)] px-3 pb-3 pt-2 md:hidden"
           >
-            <motion.div className="mx-auto max-w-[130rem] overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.35)] bg-[linear-gradient(145deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06))] shadow-[0_18px_40px_rgba(20,10,4,0.42)] backdrop-blur-2xl">
+            <motion.div className="mx-auto max-w-[130rem] overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.78)] bg-[linear-gradient(145deg,rgba(255,255,255,0.86),rgba(246,238,230,0.66))] shadow-[0_18px_40px_rgba(55,35,21,0.16)] backdrop-blur-2xl">
               <motion.nav className="flex flex-col gap-1.5 p-3" aria-label="Mobile primary">
                 {links.map((link) => (
                   <motion.div key={link.to} variants={mobileItemMotion}>
@@ -144,8 +144,8 @@ export default function Navbar() {
                       className={({ isActive }) =>
                         `focus-ring block rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.06em] transition-all duration-200 ${
                           isActive
-                            ? 'bg-[rgba(255,255,255,0.2)] text-white shadow-[0_10px_24px_rgba(24,12,5,0.26)] ring-1 ring-[rgba(255,255,255,0.42)]'
-                            : 'text-white/95 hover:bg-[rgba(255,255,255,0.14)]'
+                            ? 'bg-[rgba(255,255,255,0.88)] text-[rgba(65,38,23,0.96)] shadow-[0_10px_22px_rgba(49,33,22,0.14)] ring-1 ring-[rgba(255,255,255,0.9)]'
+                            : 'text-[rgba(81,56,39,0.96)] hover:bg-[rgba(255,255,255,0.54)]'
                         }`
                       }
                     >
