@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  /* Global visual scale: 0.67 means 100% browser zoom looks like prior ~67% site view */
+  --tc-global-scale: 0.67;
   --tc-bg-1: #f3e0cb;
   --tc-bg-2: #e3c9ab;
   --tc-ink: #442f25;
@@ -31,6 +33,18 @@ html,
 body,
 #root {
   min-height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    zoom: var(--tc-global-scale);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    zoom: 1;
+  }
 }
 
 body {
