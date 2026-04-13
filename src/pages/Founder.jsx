@@ -3,7 +3,7 @@ import SEO from '../components/SEO'
 
 const founderImages = {
   hero: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052180/image14_zycbz1.jpg',
-  noteLeft: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052228/image17_ecdxkl.jpg',
+  noteLeft: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776082242/image17_ecdxkl-removebg-preview_mksjll.png',
   noteRight: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052187/image31_ikrijj.jpg',
   sectionWide: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052236/image20_vzz6j5.png',
   closingWide: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052238/image32_s08m35.jpg',

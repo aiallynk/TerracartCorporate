@@ -7,7 +7,7 @@ const images = {
   image18: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776059661/image18_gro9pb.png',
   image19: 'https://www.terracart.in/assets/images/image19.png?v=0a813c8e',
   image24: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051921/image24_kyd7lx.jpg',
-  roadmap: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051936/image07_i9grkv.png',
+  roadmap: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776082876/Gemini_Generated_Image_uafegsuafegsuafe-removebg-preview_q9dst0.png',
   viability: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051949/image21_us6u1v.png',
   benefits: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051981/image22_z8iefk.png',
 }
@@ -28,16 +28,10 @@ const dmfDownloads = [
 ]
 
 const revealGlow = {
-  hidden: { opacity: 0, y: 20, filter: 'brightness(0.96)' },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    filter: ['brightness(1)', 'brightness(1.1)', 'brightness(1)'],
-    boxShadow: [
-      '0 0 0 rgba(232, 194, 154, 0)',
-      '0 0 42px rgba(232, 194, 154, 0.45)',
-      '0 0 0 rgba(232, 194, 154, 0)',
-    ],
   },
 }
 

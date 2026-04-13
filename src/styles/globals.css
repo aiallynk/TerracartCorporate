@@ -236,7 +236,7 @@ a {
   height: clamp(20rem, 41vw, 33rem);
   overflow: hidden;
   border-radius: 1rem;
-  background: rgba(252, 246, 239, 0.92);
+  background: #ffffff;
 }
 
 .founder-note-image {

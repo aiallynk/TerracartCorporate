@@ -16,7 +16,15 @@ export default function Footer() {
     <footer className="mt-8 border-t border-white/50 bg-white/55 px-4 py-10 backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-6xl gap-8 md:grid-cols-3">
         <div>
-          <h3 className="text-xl font-semibold text-[var(--tc-ink)]">TerraCart</h3>
+          <h3 className="inline-flex items-center gap-2 text-xl font-semibold text-[var(--tc-ink)]">
+            <img
+              src="/assets/logo.png"
+              alt="TerraCart logo"
+              className="h-6 w-6 rounded-sm object-contain"
+              loading="lazy"
+            />
+            <span>TerraCart</span>
+          </h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--tc-muted)]">
             India&apos;s inclusive kiosk ecosystem designed for dignity, ownership, and scalable impact.
           </p>
@@ -39,8 +47,8 @@ export default function Footer() {
           <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--tc-ink)]/80">Contact</h4>
           <ul className="mt-3 space-y-2 text-sm text-[var(--tc-muted)]">
             <li>Nashik, Maharashtra, India</li>
-            <li>support@terracart.in</li>
-            <li>+91 90000 00000</li>
+            <li>drskapse@gmail.com</li>
+            <li>+91 7720030047</li>
           </ul>
         </div>
       </div>

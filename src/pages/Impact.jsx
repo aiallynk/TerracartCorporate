@@ -78,7 +78,7 @@ export default function Impact() {
         <section className="section-shell pt-0 pb-8">
           <h2 className="section-title !text-[clamp(1.7rem,2.9vw,2.5rem)]">Why This Works for Public Institutions?</h2>
           <img
-            src="https://www.terracart.in/assets/images/image23.png?v=0a813c8e"
+            src="https://res.cloudinary.com/dvkyvryei/image/upload/v1776083210/Gemini_Generated_Image_rrznrerrznrerrzn-removebg-preview_niuwjf.png"
             alt="Why this works for public institutions"
             loading="lazy"
             className="impact-inline-image impact-institution-image mt-6"

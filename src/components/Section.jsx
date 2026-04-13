@@ -3,16 +3,10 @@ import Button from './Button'
 import GlassCard from './GlassCard'
 
 const reveal = {
-  hidden: { opacity: 0, y: 24, filter: 'brightness(0.96)' },
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
-    filter: ['brightness(1)', 'brightness(1.09)', 'brightness(1)'],
-    boxShadow: [
-      '0 0 0 rgba(228, 190, 151, 0)',
-      '0 0 36px rgba(228, 190, 151, 0.45)',
-      '0 0 0 rgba(228, 190, 151, 0)',
-    ],
   },
 }
 
