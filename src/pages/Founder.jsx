@@ -22,29 +22,6 @@ const founderIntroLinks = [
   },
 ]
 
-const founderBottomLinks = [
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/dr-sonam-kapse-8a68b817b',
-    icon: 'linkedin',
-  },
-  {
-    label: 'drskapse@gmail.com',
-    href: 'mailto:drskapse@gmail.com',
-    icon: 'email',
-  },
-  {
-    label: 'Ai ALLY',
-    href: 'https://aially.in/',
-    icon: 'web',
-  },
-  {
-    label: 'Maharashtra, India',
-    href: 'https://maps.google.com/?q=Maharashtra%2C%20India',
-    icon: 'location',
-  },
-]
-
 function FounderConnectIcon({ icon }) {
   if (icon === 'linkedin') {
     return (
@@ -111,11 +88,8 @@ export default function Founder() {
                 science, not a checkbox. As the founder of The K Methodology (TM), she bridges the gap between medical
                 precision and corporate strategy. With extensive experience across healthcare, R&amp;D, and the
                 rehabilitation of vulnerable communities, Dr. Kapse helps multinationals move beyond "awareness" toward
-                measurable competency.
-              </p>
-              <p className="mt-5 text-[1.1rem] leading-[1.85] text-[var(--tc-muted)] md:text-[1.18rem]">
-                A TEDx speaker and recipient of multiple national and international awards, she doesn&apos;t just advocate for
-                change - she builds the infrastructure for it.
+                measurable competency. A TEDx speaker and recipient of multiple national and international awards, she
+                doesn&apos;t just advocate for change - she builds the infrastructure for it.
               </p>
 
               <div className="founder-connect-wrap">
@@ -185,14 +159,6 @@ export default function Founder() {
             <Button variant="terracart" size="terracart" className="min-w-[21rem]" to="/india-millets-co">
               Explore India Millets Co.
             </Button>
-          </div>
-        </section>
-
-        <section className="section-shell pt-0 pb-12">
-          <div className="founder-connect-grid-bottom">
-            {founderBottomLinks.map((item) => (
-              <FounderConnectItem key={item.label} item={item} />
-            ))}
           </div>
         </section>
       </div>

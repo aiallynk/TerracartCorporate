@@ -16,21 +16,18 @@ const transformationItems = [
 const proofBlocks = [
   {
     title: 'In the News',
-    subtitle: 'In the News coverage for Terra Cart',
     image: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052001/image25_p8do8e.png',
-    alt: 'In the News coverage for Terra Cart',
+    alt: 'In the News',
   },
   {
     title: 'Media Coverages',
-    subtitle: 'Media coverages for Terra Cart',
     image: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052019/image26_enqzqa.png',
-    alt: 'Media coverages for Terra Cart',
+    alt: 'Media Coverages',
   },
   {
     title: 'Companies We Work With',
-    subtitle: 'Companies working with Terra Cart',
     image: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776052007/image15_czjtje.png',
-    alt: 'Companies working with Terra Cart',
+    alt: 'Companies We Work With',
   },
 ]
 
@@ -93,7 +90,6 @@ export default function Impact() {
             {proofBlocks.map((item) => (
               <article key={item.title} className="impact-proof-block">
                 <h3 className="text-[1.5rem] font-semibold text-[var(--tc-ink)] md:text-[1.8rem]">{item.title}</h3>
-                <p className="mt-2 text-[0.98rem] leading-[1.8] text-[var(--tc-muted)] md:text-[1.05rem]">{item.subtitle}</p>
                 <img src={item.image} alt={item.alt} loading="lazy" className="impact-inline-image mt-4" />
               </article>
             ))}

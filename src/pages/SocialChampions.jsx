@@ -185,7 +185,7 @@ export default function SocialChampions() {
               src={images.image19}
               alt="Legacy of trust social champion profile"
               variant="transparent"
-              maxWidth="22rem"
+              className="max-w-[14rem] md:max-w-[22rem]"
             />
             <motion.p
               variants={revealGlow}
