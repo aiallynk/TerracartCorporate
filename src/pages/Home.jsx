@@ -3,7 +3,7 @@ import SEO from '../components/SEO'
 import Section from '../components/Section'
 
 const images = {
-  heroLogo: 'https://www.terracart.in/assets/images/image08.png',
+  heroLogo: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051598/logo_rwoel6.png',
   mission: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051599/image02_zznbs9.jpg',
   vision: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051598/image03_qdajb5.jpg',
   atmanirbhar: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051598/image04_ntmaot.jpg',
