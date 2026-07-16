@@ -20,6 +20,25 @@ const kioskSlides = [
   },
 ]
 
+const communitySlides = [
+  {
+    src: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1784201837/img1_kyaono.png',
+    alt: 'Community 1',
+  },
+  {
+    src: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1784201837/img4_d67hov.png',
+    alt: 'Community 2',
+  },
+  {
+    src: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1784201836/img2_pf0qcm.jpg',
+    alt: 'Community 3',
+  },
+  {
+    src: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1784201836/img3_co77qm.jpg',
+    alt: 'Community 3',
+  },
+]
+
 export default function Kiosk() {
   return (
     <>
@@ -60,6 +79,53 @@ export default function Kiosk() {
               We&apos;ve considered every angle to create a space that is not just accessible, but truly empowering. From the
               first glance to the internal workflow, our design philosophy is built on a seamless integration of welcome,
               empowerment, and experience.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div className="hero-surface">
+        <section className="section-shell pb-8">
+          <div className="tc-soft-card rounded-3xl p-6 md:p-8">
+            <h1 className="section-title !text-[clamp(1.9rem,3.2vw,2.8rem)]">Terra Cart : Empowering Every Community, Enabling Every Dream.</h1>
+            <p className="mt-4 text-[1rem] leading-[1.85] text-[var(--tc-muted)] md:text-[1.15rem]">
+              A one of a kind initiative for NMC towards inclusion, dignity & sustainable livelihood
+            </p>
+
+            <div className="mx-auto mt-7 max-w-[62rem] overflow-hidden rounded-2xl border border-[rgba(167,132,102,0.35)] bg-white/60 p-2">
+              <Swiper
+                key="community-swiper"
+                modules={[Autoplay, Pagination, A11y]}
+                slidesPerView={1}
+                spaceBetween={0}
+                loop={true}
+                loopAdditionalSlides={communitySlides.length}
+                observer={true}
+                observeParents={true}
+                watchOverflow={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: false,
+                }}
+                pagination={{ clickable: true }}
+                className="tc-kiosk-swiper rounded-xl"
+              >
+                {communitySlides.map((slide, index) => (
+                  <SwiperSlide key={`community-${index}`}>
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      loading="lazy"
+                      className="block h-[500px] w-full object-contain"
+                      onError={() => console.log('Failed:', slide.src)}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <p className="mx-auto mt-7 max-w-[94rem] text-[1rem] leading-[1.88] text-[var(--tc-muted)] md:text-[1.12rem]">
+                Different Community, One Vision : Inclusion by design, Impact for Generations
             </p>
           </div>
         </section>

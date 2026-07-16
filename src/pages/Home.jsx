@@ -41,7 +41,7 @@ export default function Home() {
             />
 
             <h1 className="text-3xl font-normal leading-tight md:text-[3.35rem]">
-              Welcome to Terra Cart - India&apos;s First Enterprise for Disabilty
+              Welcome to Terra Cart - India&apos;s First Inclusive Entrepreneurship Ecosystem
             </h1>
 
             <p className="mt-7 text-2xl font-medium leading-relaxed md:text-[2.15rem]">
@@ -49,13 +49,11 @@ export default function Home() {
             </p>
 
             <p className="mx-auto mt-6 max-w-[88rem] text-xl font-medium leading-relaxed md:text-[1.8rem]">
-              Terra Cart is India&apos;s first entrepreneurial ecosystem built to transition Persons with Disabilities not as
-              helpers, not as employees but as Owners. We are creating a new age of Indian Inclusivity built on
-              strength, scalability, and global social innovation.
+              Terra Cart is India's first entrepreneurial ecosystem built to empower Persons with Disabilities and Tribal Women—not as beneficiaries, not as employees, but as business owners. We are creating a new era of inclusive entrepreneurship built on dignity, sustainability, innovation, and economic independence.
             </p>
 
             <p className="mt-6 text-2xl font-semibold leading-relaxed md:text-[1.75rem]">
-              This is <strong>&quot;आत्मनिर्भर और विकसित भारत&quot;</strong>-built on inclusion.
+              This is <strong>&quot;आत्मनिर्भर और विकसित भारत&quot;</strong>-built on inclusion, entrepreneurship,<br/> and sustainable livelihoods.
             </p>
 
             <div className="mt-10">
@@ -74,9 +72,8 @@ export default function Home() {
           title="Our Mission"
           subtitle="Terra Cart: Hospitality by Choice, Inclusion by Design."
           description={[
-            'India\'s premier platform where premium service meets social innovation.',
-            'Not beneficiaries. Not charity. But entrepreneurs .',
-            'Whether you are a corporate, investor, institution, or changemaker - you can help build India\'s most inclusive hospitality ecosystem.',
+            'Our mission is to build Indias most inclusive entrepreneurial ecosystem by creating sustainable livelihood opportunities for Persons with Disabilities and Tribal Women through premium hospitality, millet-based enterprises, accessible technology, and community-driven innovation.',
+            'We believe empowerment begins with ownership—not charity.'
           ]}
           media={{ src: images.mission, alt: 'Terra Cart mission image', className: 'aspect-[16/9] object-contain bg-white object-center' }}
           textCardClassName={`${panelClassName} text-center md:px-12`}
@@ -90,14 +87,21 @@ export default function Home() {
         <Section
           id="vision"
           title="Our Vision"
-          subtitle="From Old Charity to New Enterprise"
+          subtitle="From Charity to Entrepreneurship."
           description={[
-            'At Terra Cart, we are redefining inclusion through four bold shifts:',
-            'From gifting wheelchairs to the freedom of business ownership.',
-            'From "helping the disabled" to empowering uniquely skilled professionals.',
-            'From temporary aid to lasting enterprise.',
-            'From silent inclusion to visible leadership.',
-            'Inclusion must create independence, not dependency.',
+            'We envision an India where every person, regardless of ability or background, has the opportunity to become an entrepreneur.',
+
+            'We are creating a future where:',
+
+            '* Persons with Disabilities become business owners.',
+
+            '* Tribal Women become successful rural entrepreneurs.',
+
+            '* Indigenous products reach premium markets.',
+
+            '* Public spaces become symbols of inclusion.',
+
+            '* Entrepreneurship becomes the foundation of social transformation.',
           ]}
           media={{ src: images.vision, alt: 'Terra Cart vision image', className: 'object-contain bg-white object-center' }}
           textCardClassName={`${panelClassName} text-center md:px-9`}

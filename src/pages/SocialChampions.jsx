@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Button from '../components/Button'
 import SEO from '../components/SEO'
 
+
 const images = {
   image18: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776059661/image18_gro9pb.png',
   image19: 'https://www.terracart.in/assets/images/image19.png?v=0a813c8e',
@@ -44,16 +45,21 @@ const introPoints = [
 
 const contentSections = [
   {
-    id: 'roadmap',
-    title: 'The Terra Cart Roadmap',
-    titleBand: 'light',
-    background: 'tan',
-    description:
-      'The Terra Cart Ecosystem is a complete, end-to-end system designed to transform inclusion into ownership. It connects government access, inclusive design, training, technology, and operations so Social Champions can focus on people, service, and growth.',
-    imageSrc: images.roadmap,
-    imageAlt: 'Terra Cart Roadmap',
-    imageVariant: 'transparent',
-    maxWidth: '1140px',
+  id: 'roadmap',
+  title: 'The Terra Cart Roadmap',
+  titleBand: 'light',
+  background: 'tan',
+
+  description:
+    'The Terra Cart Ecosystem is a complete, end-to-end system designed to transform inclusion into ownership. It connects government access, inclusive design, training, technology, and operations so Social Champions can focus on people, service, and growth.',
+
+  flow:
+    'Training → Skill Development → Business Incubation → Terra Cart Setup → Digital Marketing → Market Access → Sustainable Income → Financial Independence',
+
+  imageSrc: images.roadmap,
+  imageAlt: 'Terra Cart Roadmap',
+  imageVariant: 'transparent',
+  maxWidth: '1140px',
   },
   {
     id: 'viability',
