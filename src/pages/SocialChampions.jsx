@@ -1,17 +1,21 @@
-import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
+import GlassCard from '../components/GlassCard'
+import LaunchSlide, { launchImageClass, launchImageFrame } from '../components/LaunchSlide'
 import SEO from '../components/SEO'
-
 
 const images = {
   image18: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776059661/image18_gro9pb.png',
   image19: 'https://www.terracart.in/assets/images/image19.png?v=0a813c8e',
+  championPortrait: '/assets/dr-dnyaneshwar-mulay.png',
   image24: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051921/image24_kyd7lx.jpg',
   roadmap: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776082876/Gemini_Generated_Image_uafegsuafegsuafe-removebg-preview_q9dst0.png',
   viability: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051949/image21_us6u1v.png',
   benefits: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051981/image22_z8iefk.png',
 }
+
+const legacyPlaqueClass =
+  'mission-dark-card sc-legacy-plaque !rounded-[1.1rem] flex w-full flex-col justify-center text-center md:px-9 md:py-10 lg:w-[22rem] lg:max-w-[22rem] lg:shrink-0 xl:w-[24rem] xl:max-w-[24rem]'
 
 const dmfDownloads = [
   {
@@ -28,86 +32,80 @@ const dmfDownloads = [
   },
 ]
 
-const revealGlow = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-  },
+const reveal = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0 },
 }
 
-const introPoints = [
-  'Vision-aligned impact investors',
-  'Ethical corporate partners',
-  'Progressive institutions & ecosystems',
-  'Leaders who believe inclusion is smart economics',
-]
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+}
 
-const contentSections = [
+const championArchetypes = [
   {
-  id: 'roadmap',
-  title: 'The Terra Cart Roadmap',
-  titleBand: 'light',
-  background: 'tan',
-
-  description:
-    'The Terra Cart Ecosystem is a complete, end-to-end system designed to transform inclusion into ownership. It connects government access, inclusive design, training, technology, and operations so Social Champions can focus on people, service, and growth.',
-
-  flow:
-    'Training → Skill Development → Business Incubation → Terra Cart Setup → Digital Marketing → Market Access → Sustainable Income → Financial Independence',
-
-  imageSrc: images.roadmap,
-  imageAlt: 'Terra Cart Roadmap',
-  imageVariant: 'transparent',
-  maxWidth: '1140px',
+    title: 'Impact Investors',
+    line: 'Vision-aligned capital for scalable inclusion.',
+    icon: (
+      <path d="M12 3 3 8.5 12 14l9-5.5L12 3Zm0 3.2 5.6 3.4L12 13 6.4 9.6 12 6.2ZM5 11.2v4.3c0 .8 3.1 2.5 7 2.5s7-1.7 7-2.5v-4.3l-2.2 1.3c-1.3.8-3 1.2-4.8 1.2s-3.5-.4-4.8-1.2L5 11.2Z" />
+    ),
   },
   {
-    id: 'viability',
-    title: 'Built for Impact. Designed for Viability.',
-    titleBand: 'light',
-    background: 'tan',
-    imageSrc: images.viability,
-    imageAlt: 'Built for Impact. Designed for Viability.',
-    imageVariant: 'transparent',
-    maxWidth: '860px',
+    title: 'Corporate Partners',
+    line: 'Ethical enterprises building with purpose.',
+    icon: (
+      <path d="M4 20V8.5L12 4l8 4.5V20h-5v-6H9v6H4Zm2-9.8V18h1v-5h10v-5H6Z" />
+    ),
   },
   {
-    id: 'benefits',
-    title: 'Who Benefits from This Model?',
-    titleBand: 'tan',
-    background: 'tan',
-    imageSrc: images.benefits,
-    imageAlt: 'Who Benefits from This Model',
-    imageVariant: 'transparent-compact',
-    maxWidth: '740px',
-    cta: { label: 'Own a Terra Cart', to: '/contact' },
+    title: 'Institutions',
+    line: 'Progressive ecosystems driving change.',
+    icon: (
+      <path d="M3 20V9l9-5 9 5v11h-6v-6H9v6H3Zm2-8.2 7-3.9 7 3.9V18h-2v-4h-6v4H5v-6.2Z" />
+    ),
+  },
+  {
+    title: 'Purpose Leaders',
+    line: 'Inclusion as smart economics.',
+    icon: (
+      <path d="M12 2a7 7 0 0 1 7 7c0 4.2-3.4 7.8-7 10-3.6-2.2-7-5.8-7-10a7 7 0 0 1 7-7Zm0 2a5 5 0 0 0-5 5c0 2.8 2.2 5.6 5 7.4 2.8-1.8 5-4.6 5-7.4a5 5 0 0 0-5-5Zm0 2.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6Z" />
+    ),
   },
 ]
 
-function AnimatedImage({ src, alt, variant = 'framed', maxWidth, className = '' }) {
-  const frameClasses = {
-    framed: 'social-image-frame p-2',
-    transparent: 'social-image-transparent',
-    'transparent-compact': 'social-image-transparent social-image-transparent-compact',
-  }
+const championChips = ['Capital', 'Access', 'Credibility']
 
+const roadmapSteps = [
+  'Training',
+  'Skill Development',
+  'Business Incubation',
+  'Terra Cart Setup',
+  'Digital Marketing',
+  'Market Access',
+  'Sustainable Income',
+  'Financial Independence',
+]
+
+function Reveal({ children, className = '', delay = 0 }) {
   return (
-    <motion.figure
-      variants={revealGlow}
+    <motion.div
+      variants={reveal}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-      className={`mx-auto ${frameClasses[variant] || frameClasses.framed} ${className}`}
-      style={maxWidth ? { maxWidth } : undefined}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.35, ease: 'easeOut', delay }}
+      className={className}
     >
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className={`h-auto w-full object-contain ${variant === 'framed' ? 'rounded-[0.9rem]' : ''}`}
-      />
-    </motion.figure>
+      {children}
+    </motion.div>
+  )
+}
+
+function ChampionIcon({ children }) {
+  return (
+    <span className="sc-archetype-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">{children}</svg>
+    </span>
   )
 }
 
@@ -120,119 +118,136 @@ export default function SocialChampions() {
         canonical="/social-champions"
       />
 
-      <section className="hero-surface">
-        <div className="section-shell py-14 md:py-18">
-          <motion.div
-            variants={revealGlow}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="mx-auto max-w-[96rem] rounded-[1.3rem] border border-[#e5d3bd]/70 bg-[rgba(236,202,164,0.28)] px-6 py-8 md:px-10 md:py-10"
-          >
-            <h1 className="section-title text-center !text-[clamp(2.2rem,3.9vw,3.7rem)]">Who Are Social Champions?</h1>
-            <div className="mt-8 text-[1.2rem] leading-[1.75] text-[var(--tc-muted)] md:text-[1.6rem]">
-              <p className="font-semibold text-[var(--tc-ink)]">Social Champions are more than investors.</p>
-              <ul className="mt-5 space-y-2 font-medium">
-                {introPoints.map((point) => (
-                  <li key={point}>- {point}</li>
-                ))}
-              </ul>
-              <p className="mt-6">
-                Together, they help build enterprises where impact and profitability coexist.
-              </p>
-              <p className="mt-6 font-semibold text-[var(--tc-ink)]">What Do Social Champions Actually Do?</p>
-              <p className="mt-2">
-                Social Champions enable ownership, not control. They provide capital, access, partnerships, and credibility,
-                allowing PwD entrepreneurs to lead, operate, and grow independent businesses.
-              </p>
-              <p className="mt-6 font-semibold text-[var(--tc-ink)]">Why Social Champions Join Terra Cart?</p>
-              <p className="mt-2">
-                If you believe inclusion must be economically strong and ethically designed, Terra Cart invites you to
-                partner in building the next chapter of inclusive commerce.
-              </p>
-            </div>
-          </motion.div>
+      {/* Hero */}
+      <section className="social-band-light nav-island-underlay">
+        <div className="section-shell sc-hero-shell">
+          <div className="sc-hero-grid">
+            <Reveal>
+              <div className="sc-hero-copy">
+                <p className="sc-eyebrow">Terra Cart Partners</p>
+                <h1 className="section-title sc-hero-title">Who Are Social Champions?</h1>
+                <p className="sc-hero-lead">
+                  Social Champions are partners who turn inclusion into ownership — not charity, but scalable
+                  enterprise where impact and profitability coexist.
+                </p>
+                <div className="mt-8">
+                  <Button to="/contact" variant="plaque" size="plaque" className="min-w-[22rem] md:min-w-[26rem]">
+                    Join as Social Champion
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <figure className="sc-hero-visual">
+                <img
+                  src={images.image18}
+                  alt="Social Champions concept visual"
+                  loading="eager"
+                  className="sc-hero-visual-img"
+                />
+              </figure>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      <section className="hero-surface">
-        <div className="section-shell pt-0 pb-8">
-          <AnimatedImage
-            src={images.image18}
-            alt="Social Champions concept visual"
-            variant="transparent"
-            maxWidth="1140px"
-          />
-        </div>
-      </section>
-
+      {/* Archetype cards */}
       <section className="social-band-light">
         <div className="section-shell py-10 md:py-12">
-          <motion.h2
-            variants={revealGlow}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="section-title text-center text-[var(--tc-ink)]"
-          >
-            Legacy of Trust - Terra Cart&apos;s 1st Social Champion.
-          </motion.h2>
-
-          <div className="mt-8 space-y-8">
-            <AnimatedImage
-              src={images.image19}
-              alt="Legacy of trust social champion profile"
-              variant="transparent"
-              className="max-w-[14rem] md:max-w-[22rem]"
-            />
-            <motion.p
-              variants={revealGlow}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="text-center text-[1.65rem] font-medium text-[var(--tc-muted)] md:text-[2.05rem]"
-            >
-              Dr. Dnyaneshwar Mulay
-            </motion.p>
-            <AnimatedImage
-              src={images.image24}
-              alt="Social champion credentials and highlights"
-              variant="framed"
-              maxWidth="930px"
-            />
-          </div>
-
+          <Reveal>
+            <p className="sc-section-eyebrow text-center">More than investors</p>
+            <h2 className="section-title sc-section-heading text-center">Champions Who Build With Us</h2>
+          </Reveal>
           <motion.div
-            variants={revealGlow}
+            variants={stagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="mx-auto mt-8 max-w-[72rem] text-center text-[1.05rem] leading-[1.9] text-[#637181] md:text-[1.55rem]"
+            viewport={{ once: true, amount: 0.15 }}
+            className="sc-archetype-grid mt-8 md:mt-10"
           >
-            <p>When a Visionary Leads, Change Follows.</p>
-            <p>
-              From reforming India&apos;s passport system to championing human rights, Dr. Dnyaneshwar Mulay has dedicated
-              his life to serving the people. Today, he brings that same spirit of integrity to Terracart as our first
-              Social Champion.
-            </p>
+            {championArchetypes.map((item) => (
+              <motion.div key={item.title} variants={reveal}>
+                <GlassCard className="mission-dark-card sc-archetype-card !rounded-[1.15rem] !p-6 md:!p-8" hover={false}>
+                  <ChampionIcon>{item.icon}</ChampionIcon>
+                  <h3 className="sc-archetype-title">{item.title}</h3>
+                  <p className="sc-archetype-line">{item.line}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
           </motion.div>
+        </div>
+      </section>
 
-          <motion.div
-            variants={revealGlow}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="mt-10"
-          >
-            <h3 className="text-center text-[0.9rem] font-semibold uppercase tracking-[0.28em] text-[var(--tc-muted)] md:text-[1rem]">
-              DMF Downloads
-            </h3>
-            <div className="tc-download-grid mt-5">
+      {/* Dark dual tiles */}
+      <section className="social-band-light social-band-divider">
+        <div className="section-shell pb-10 md:pb-14">
+          <div className="sc-dual-grid">
+            <Reveal>
+              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]" hover={false}>
+                <h2 className="sc-dual-title">What Social Champions Do</h2>
+                <div className="launch-event-plaque-rule sc-dual-rule" aria-hidden="true" />
+                <p className="sc-dual-body">
+                  They enable ownership, not control — empowering PwD entrepreneurs to lead, operate, and grow
+                  independent businesses.
+                </p>
+                <div className="sc-chip-row">
+                  {championChips.map((chip) => (
+                    <span key={chip} className="sc-chip">
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </GlassCard>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]" hover={false}>
+                <h2 className="sc-dual-title">Why They Join Terra Cart</h2>
+                <div className="launch-event-plaque-rule sc-dual-rule" aria-hidden="true" />
+                <p className="sc-dual-body">
+                  For leaders who believe inclusion must be economically strong and ethically designed — building the
+                  next chapter of inclusive commerce.
+                </p>
+                <div className="mt-6">
+                  <Button to="/contact" variant="plaqueLight" size="plaqueLight" className="min-w-[14rem]">
+                    Partner With Us
+                  </Button>
+                </div>
+              </GlassCard>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Legacy spotlight — Launch Event slide layout */}
+      <section className="social-band-light social-band-divider">
+        <div className="section-shell py-8 md:py-10">
+          <Reveal>
+            <LaunchSlide
+              eyebrow="Legacy of Trust"
+              title="Dr. Dnyaneshwar Mulay"
+              body="When a Visionary Leads, Change Follows. He brings integrity to Terra Cart as our first Social Champion."
+              imageSrc={images.championPortrait}
+              imageAlt="Dr. Dnyaneshwar Mulay, Terra Cart's first Social Champion"
+              imageClassName={`${launchImageClass} object-top`}
+              plaqueClassName={legacyPlaqueClass}
+              reverse
+            />
+          </Reveal>
+
+          <Reveal className="mt-8 md:mt-10">
+            <article className={`${launchImageFrame} mx-auto max-w-[72rem]`}>
+              <img
+                src={images.image24}
+                alt="Social champion credentials and highlights"
+                loading="lazy"
+                className="h-auto w-full rounded-2xl bg-black object-contain"
+              />
+            </article>
+          </Reveal>
+
+          <Reveal className="mt-8">
+            <p className="sc-section-eyebrow text-center">Resources</p>
+            <div className="tc-download-grid mt-4">
               {dmfDownloads.map((item) => (
                 <Button
                   key={item.href}
@@ -246,100 +261,104 @@ export default function SocialChampions() {
                 </Button>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
-      {contentSections.map((block) => (
-        <Fragment key={block.id}>
-          {block.titleBand === 'light' ? (
-            <section className="social-band-light social-band-divider">
-              <div className="section-shell py-7 md:py-8">
-                <motion.h2
-                  variants={revealGlow}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="section-title text-center text-[var(--tc-ink)]"
-                >
-                  {block.title}
-                </motion.h2>
-              </div>
-            </section>
-          ) : null}
+      {/* Roadmap */}
+      <section className="hero-surface">
+        <div className="section-shell py-10 md:py-14">
+          <Reveal>
+            <p className="sc-section-eyebrow text-center">The Ecosystem</p>
+            <h2 className="section-title sc-section-heading text-center">The Terra Cart Roadmap</h2>
+            <p className="sc-roadmap-lead mx-auto mt-4 max-w-[48rem] text-center">
+              A complete system connecting access, design, training, and operations — so Champions focus on people,
+              service, and growth.
+            </p>
+          </Reveal>
 
-          <section className={block.background === 'tan' ? 'hero-surface' : 'social-band-light'}>
-            <div className="section-shell py-10 md:py-12">
-              {block.titleBand === 'tan' ? (
-                <motion.h2
-                  variants={revealGlow}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="section-title mb-6 text-center text-[var(--tc-ink)]"
-                >
-                  {block.title}
-                </motion.h2>
-              ) : null}
-
-              {block.description ? (
-                <motion.p
-                  variants={revealGlow}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="mx-auto mb-8 max-w-[94rem] text-left text-[1.18rem] leading-[1.75] text-[var(--tc-hero-text)] md:text-[1.5rem]"
-                >
-                  {block.description}
-                </motion.p>
-              ) : null}
-
-              <AnimatedImage
-                src={block.imageSrc}
-                alt={block.imageAlt}
-                variant={block.imageVariant}
-                maxWidth={block.maxWidth}
-              />
-
-              {block.cta ? (
-                <motion.div
-                  variants={revealGlow}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="mt-10 text-center"
-                >
-                  <Button to={block.cta.to} variant="terracart" size="terracart">
-                    {block.cta.label}
-                  </Button>
-                </motion.div>
-              ) : null}
+          <Reveal className="mt-8 md:mt-10">
+            <div className="sc-roadmap-track" aria-label="Terra Cart roadmap steps">
+              {roadmapSteps.map((step, index) => (
+                <div key={step} className="sc-roadmap-step">
+                  <span className="sc-roadmap-step-num">{index + 1}</span>
+                  <span className="sc-roadmap-step-label">{step}</span>
+                </div>
+              ))}
             </div>
-          </section>
-        </Fragment>
-      ))}
+          </Reveal>
 
+          <Reveal className="mt-8 md:mt-10">
+            <figure className="mx-auto max-w-[72rem]">
+              <img src={images.roadmap} alt="Terra Cart Roadmap infographic" loading="lazy" className="h-auto w-full object-contain" />
+            </figure>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Bento: viability + benefits */}
+      <section className="social-band-light">
+        <div className="section-shell py-10 md:py-14">
+          <div className="sc-bento-grid">
+            <Reveal className="sc-bento-viability">
+              <GlassCard className="sc-bento-card !rounded-[1.1rem] !p-4 md:!p-5" hover={false}>
+                <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
+                  Built for Impact. Designed for Viability.
+                </h2>
+                <figure className="sc-bento-image-wrap">
+                  <img
+                    src={images.viability}
+                    alt="Built for Impact. Designed for Viability."
+                    loading="lazy"
+                    className="h-auto w-full object-contain"
+                  />
+                </figure>
+              </GlassCard>
+            </Reveal>
+            <Reveal delay={0.06} className="sc-bento-benefits">
+              <GlassCard className="sc-bento-card sc-bento-card-accent !rounded-[1.1rem] !p-4 md:!p-5" hover={false}>
+                <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
+                  Who Benefits from This Model?
+                </h2>
+                <figure className="sc-bento-image-wrap sc-bento-image-wrap-compact">
+                  <img
+                    src={images.benefits}
+                    alt="Who Benefits from This Model"
+                    loading="lazy"
+                    className="h-auto w-full object-contain"
+                  />
+                </figure>
+                <div className="mt-6 text-center md:text-left">
+                  <Button to="/contact" variant="terracart" size="terracart" className="min-w-[16rem]">
+                    Own a Terra Cart
+                  </Button>
+                </div>
+              </GlassCard>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
       <section className="social-band-light social-band-divider">
-        <div className="section-shell py-8">
-          <motion.div
-            variants={revealGlow}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
-          >
-            <Button to="/contact" variant="terracart" size="terracart" className="min-w-[16rem]">
-              Contact Us
-            </Button>
-            <Button to="/privacy-policy" variant="terracart" size="terracart" className="min-w-[16rem]">
-              Privacy Policy
-            </Button>
-          </motion.div>
+        <div className="section-shell py-10 md:pb-14">
+          <Reveal>
+            <GlassCard className="mission-dark-card sc-dual-card sc-closing-cta !rounded-[1.1rem]" hover={false}>
+              <h2 className="sc-dual-title text-center">Partner With Terra Cart</h2>
+              <div className="launch-event-plaque-rule sc-dual-rule mx-auto" aria-hidden="true" />
+              <p className="sc-dual-body mx-auto mt-4 max-w-[36rem] text-center">
+                Build enterprises where dignity, ownership, and measurable impact grow together.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                <Button to="/contact" variant="plaqueLight" size="plaqueLight" className="min-w-[16rem]">
+                  Contact Us
+                </Button>
+                <Button to="/privacy-policy" variant="plaqueLight" size="plaqueLight" className="min-w-[16rem]">
+                  Privacy Policy
+                </Button>
+              </div>
+            </GlassCard>
+          </Reveal>
         </div>
       </section>
     </>

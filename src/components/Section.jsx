@@ -25,12 +25,20 @@ export default function Section({
   descriptionClassName = '',
   textCardClassName = '',
   mediaCardClassName = '',
+  compact = false,
+  matchMediaHeight = false,
 }) {
   const textContent = Array.isArray(description) ? description : [description]
   const isStack = layout === 'stack'
-  const textCardShape = `${textCardClassName} ${isStack ? '' : 'h-full'}`
-  const mediaCardShape = `overflow-hidden p-2 ${mediaCardClassName} ${isStack ? '' : 'flex h-full'}`
+  const stretchTextCard = !isStack && !compact
+  const stretchMediaCard = !isStack && (!compact || matchMediaHeight)
+  const textCardShape = `${textCardClassName} ${stretchTextCard ? 'h-full' : ''}`
+  const mediaCardShape = `overflow-hidden p-2 ${mediaCardClassName} ${
+    stretchMediaCard ? (matchMediaHeight ? 'relative h-full min-h-0' : 'flex h-full') : ''
+  }`
   const mediaImageClass = media?.className || (isStack ? 'aspect-[16/10] object-cover' : 'h-full object-cover')
+  const mediaImageLayoutClass = matchMediaHeight && !isStack ? 'absolute inset-0 h-full w-full' : 'h-full w-full'
+  const gridAlignClass = compact && !matchMediaHeight ? 'items-start' : 'items-stretch'
 
   return (
     <section id={id} className={`section-shell ${className}`}>
@@ -38,7 +46,7 @@ export default function Section({
         className={
           isStack
             ? 'space-y-7'
-            : `grid items-stretch gap-8 md:grid-cols-2 md:gap-10 ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`
+            : `grid gap-8 md:grid-cols-2 md:gap-10 ${gridAlignClass} ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`
         }
       >
         <motion.div
@@ -47,7 +55,7 @@ export default function Section({
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className={isStack ? '' : 'h-full'}
+          className={stretchTextCard ? 'h-full' : ''}
         >
           <GlassCard className={textCardShape}>
             <h2 className={`section-title ${titleClassName}`}>{title}</h2>
@@ -61,9 +69,17 @@ export default function Section({
             </div>
             {cta ? (
               <div className="mt-6">
-                <Button to={cta.to} href={cta.href} external={cta.external} variant={cta.variant || 'primary'}>
+                <Button
+                  to={cta.to}
+                  href={cta.href}
+                  external={cta.external}
+                  variant={cta.variant || 'primary'}
+                  size={cta.size || 'md'}
+                  className={cta.className || ''}
+                >
                   {cta.label}
                 </Button>
+                {cta.text ? <p className="section-title mt-4 !text-[#f7efe3]">{cta.text}</p> : null}
               </div>
             ) : null}
           </GlassCard>
@@ -76,7 +92,7 @@ export default function Section({
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.3, ease: 'easeOut', delay: 0.08 }}
-            className={isStack ? '' : 'h-full'}
+            className={stretchMediaCard ? (matchMediaHeight ? 'h-full min-h-0' : 'h-full') : ''}
           >
             <GlassCard className={mediaCardShape} hover={false}>
               {media?.src ? (
@@ -84,7 +100,7 @@ export default function Section({
                   src={media.src}
                   alt={media.alt || title}
                   loading="lazy"
-                  className={`h-full w-full rounded-2xl ${mediaImageClass}`}
+                  className={`${mediaImageLayoutClass} rounded-2xl ${mediaImageClass}`}
                 />
               ) : (
                 media

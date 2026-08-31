@@ -4,6 +4,8 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 const links = [
   { label: 'Home', to: '/' },
+  { label: 'Launch Event', to: '/launch-event' },
+  { label: 'Samvidhan App', to: '/terra-cart-app' },
   { label: 'Social Champions', to: '/social-champions' },
   { label: 'Impact', to: '/impact' },
   { label: 'Kiosk', to: '/kiosk' },
@@ -57,11 +59,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(255,255,255,0.66)] bg-[rgba(255,255,255,0.58)] backdrop-blur-xl transition-all duration-300 ${
-        scrolled
-          ? 'shadow-[0_12px_36px_rgba(73,49,30,0.24)]'
-          : 'shadow-[0_8px_24px_rgba(73,49,30,0.18)]'
-      }`}
+      className="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent transition-all duration-300"
     >
       <div
         className={`mx-auto w-full max-w-[130rem] px-4 transition-all duration-300 md:px-7 ${
@@ -142,7 +140,7 @@ export default function Navbar() {
                       to={link.to}
                       end={link.to === '/'}
                       className={({ isActive }) =>
-                        `focus-ring block rounded-xl px-4 py-3 text-sm font-semibold tracking-[0.06em] transition-all duration-200 ${
+                        `focus-ring block rounded-xl px-4 py-3.5 text-lg font-semibold tracking-[0.03em] transition-all duration-200 ${
                           isActive
                             ? 'bg-[rgba(255,255,255,0.88)] text-[rgba(65,38,23,0.96)] shadow-[0_10px_22px_rgba(49,33,22,0.14)] ring-1 ring-[rgba(255,255,255,0.9)]'
                             : 'text-[rgba(81,56,39,0.96)] hover:bg-[rgba(255,255,255,0.54)]'

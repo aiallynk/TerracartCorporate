@@ -16,9 +16,22 @@ export default function ContactForm({ mode = 'home' }) {
   const [submitting, setSubmitting] = useState(false)
 
   const wrapperClass = useMemo(
-    () => (mode === 'home' ? 'glass rounded-3xl p-6 md:p-8' : 'glass rounded-3xl p-8 md:p-10'),
+    () =>
+      mode === 'home'
+        ? 'glass rounded-3xl p-6 md:p-8'
+        : 'contact-form-card rounded-[1.1rem] p-9 md:p-12',
     [mode]
   )
+
+  const labelClass =
+    mode === 'home'
+      ? 'space-y-2 text-sm font-medium text-[var(--tc-ink)]'
+      : 'space-y-2.5 text-lg font-semibold text-[var(--tc-ink)]'
+
+  const fieldClass =
+    mode === 'home'
+      ? 'focus-ring w-full rounded-xl border border-white/80 bg-white/80 px-4 py-3 text-[var(--tc-ink)] outline-none'
+      : 'contact-form-field focus-ring w-full rounded-xl px-5 py-4 text-lg text-[var(--tc-ink)] outline-none placeholder:text-base'
 
   const onChange = (event) => {
     const { name, value } = event.target
@@ -84,8 +97,8 @@ export default function ContactForm({ mode = 'home' }) {
       transition={{ duration: 0.45, ease: 'easeOut' }}
       aria-label="Contact form"
     >
-      <div className="grid gap-4 md:grid-cols-2">
-        <label className="space-y-2 text-sm font-medium text-[var(--tc-ink)]">
+      <div className="grid gap-5 md:grid-cols-2">
+        <label className={labelClass}>
           <span>Name</span>
           <input
             type="text"
@@ -93,12 +106,12 @@ export default function ContactForm({ mode = 'home' }) {
             required
             value={formData.name}
             onChange={onChange}
-            className="focus-ring w-full rounded-xl border border-white/80 bg-white/80 px-4 py-3 text-[var(--tc-ink)] outline-none"
+            className={fieldClass}
             placeholder="Your name"
           />
         </label>
 
-        <label className="space-y-2 text-sm font-medium text-[var(--tc-ink)]">
+        <label className={labelClass}>
           <span>Email</span>
           <input
             type="email"
@@ -106,41 +119,51 @@ export default function ContactForm({ mode = 'home' }) {
             required
             value={formData.email}
             onChange={onChange}
-            className="focus-ring w-full rounded-xl border border-white/80 bg-white/80 px-4 py-3 text-[var(--tc-ink)] outline-none"
+            className={fieldClass}
             placeholder="you@example.com"
           />
         </label>
       </div>
 
-      <label className="mt-4 block space-y-2 text-sm font-medium text-[var(--tc-ink)]">
+      <label className={`mt-5 block ${labelClass}`}>
         <span>Organization</span>
         <input
           type="text"
           name="organization"
           value={formData.organization}
           onChange={onChange}
-          className="focus-ring w-full rounded-xl border border-white/80 bg-white/80 px-4 py-3 text-[var(--tc-ink)] outline-none"
+          className={fieldClass}
           placeholder="Company / Institution"
         />
       </label>
 
-      <label className="mt-4 block space-y-2 text-sm font-medium text-[var(--tc-ink)]">
+      <label className={`mt-5 block ${labelClass}`}>
         <span>Message</span>
         <textarea
           name="message"
           required
-          rows="5"
+          rows={mode === 'page' ? 7 : 5}
           value={formData.message}
           onChange={onChange}
-          className="focus-ring w-full rounded-xl border border-white/80 bg-white/80 px-4 py-3 text-[var(--tc-ink)] outline-none"
+          className={fieldClass}
           placeholder="How would you like to collaborate with TerraCart?"
         />
       </label>
 
-      <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Button>{submitting ? 'Submitting...' : 'Submit'}</Button>
-        {status.type === 'success' ? <p className="text-sm font-medium text-emerald-700">{status.message}</p> : null}
-        {status.type === 'error' ? <p className="text-sm font-medium text-red-700">{status.message}</p> : null}
+      <div className="mt-7 flex flex-wrap items-center gap-4">
+        <Button size={mode === 'page' ? 'lg' : 'md'}>
+          {submitting ? 'Submitting...' : 'Submit'}
+        </Button>
+        {status.type === 'success' ? (
+          <p className={`font-medium text-emerald-700 ${mode === 'page' ? 'text-base' : 'text-sm'}`}>
+            {status.message}
+          </p>
+        ) : null}
+        {status.type === 'error' ? (
+          <p className={`font-medium text-red-700 ${mode === 'page' ? 'text-base' : 'text-sm'}`}>
+            {status.message}
+          </p>
+        ) : null}
       </div>
     </motion.form>
   )

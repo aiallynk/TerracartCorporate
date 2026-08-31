@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const Home = lazy(() => import('../pages/Home'))
+const LaunchEvent = lazy(() => import('../pages/LaunchEvent'))
+const TerraCartApp = lazy(() => import('../pages/TerraCartApp'))
 const SocialChampions = lazy(() => import('../pages/SocialChampions'))
 const Impact = lazy(() => import('../pages/Impact'))
 const Kiosk = lazy(() => import('../pages/Kiosk'))
@@ -54,6 +56,8 @@ export default function AppRoutes() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+            <Route path="/launch-event" element={<PageWrapper><LaunchEvent /></PageWrapper>} />
+            <Route path="/terra-cart-app" element={<PageWrapper><TerraCartApp /></PageWrapper>} />
             <Route path="/social-champions" element={<PageWrapper><SocialChampions /></PageWrapper>} />
             <Route path="/impact" element={<PageWrapper><Impact /></PageWrapper>} />
             <Route path="/kiosk" element={<PageWrapper><Kiosk /></PageWrapper>} />

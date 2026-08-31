@@ -1,0 +1,39 @@
+{/*
+  BACKUP — Welcome / second-slide section removed from Home.jsx
+  Date: 2026-08-26
+  Reason: Replaced with welcome-video.mp4 from Google Drive
+  Restore: paste this section back into src/pages/Home.jsx after the kiosk-hero-surface section
+*/}
+
+{/* Also restore this image key in the images object if needed:
+  heroLogo: 'https://res.cloudinary.com/dvkyvryei/image/upload/v1776051598/logo_rwoel6.png',
+*/}
+
+      <section className="hero-surface pt-0">
+        <div className="section-shell py-7 md:py-10">
+          <div className="mx-auto max-w-[98rem] text-center text-[var(--tc-hero-text)]">
+            <img
+              src={images.heroLogo}
+              alt="Terra Cart logo"
+              loading="lazy"
+              className="mx-auto mb-5 h-24 w-24 object-contain md:mb-6 md:h-32 md:w-32"
+            />
+
+            <h1 className="text-3xl font-normal leading-tight md:text-[3.35rem]">
+              Welcome to Terra Cart - India&apos;s First Inclusive Entrepreneurship Ecosystem
+            </h1>
+
+            <p className="mt-7 text-2xl font-medium leading-relaxed md:text-[2.15rem]">
+              Dignity cannot be donated. It must be designed.
+            </p>
+
+            <p className="mx-auto mt-6 max-w-[88rem] text-xl font-medium leading-relaxed md:text-[1.8rem]">
+              Terra Cart is India's first entrepreneurial ecosystem built to empower Persons with Disabilities and Tribal Women—not as beneficiaries, not as employees, but as business owners. We are creating a new era of inclusive entrepreneurship built on dignity, sustainability, innovation, and economic independence.
+            </p>
+
+            <p className="mt-6 text-2xl font-semibold leading-relaxed md:text-[1.75rem]">
+              This is <strong>&quot;आत्मनिर्भर और विकसित भारत&quot;</strong>-built on inclusion, entrepreneurship,<br/> and sustainable livelihoods.
+            </p>
+          </div>
+        </div>
+      </section>

@@ -78,12 +78,12 @@ export default function Founder() {
         canonical="/founder"
       />
 
-      <div className="founder-surface">
+      <div className="founder-surface nav-island-underlay">
         <section className="section-shell pb-8">
           <div className="founder-intro-grid">
             <article className="founder-copy">
-              <h1 className="section-title !text-[clamp(2rem,3.5vw,3.35rem)] !uppercase">Dr. Sonam Kapse</h1>
-              <p className="mt-6 text-[1.1rem] leading-[1.85] text-[var(--tc-muted)] md:text-[1.18rem]">
+              <h1 className="section-title !text-[clamp(2.4rem,4.2vw,3.85rem)] !uppercase">Dr. Sonam Kapse</h1>
+              <p className="mt-6 text-[1.5rem] leading-[1.85] text-[var(--tc-muted)] md:text-[1.75rem]">
                 Dr. Sonam Kapse is a Cancer Genetics Specialist turned Social Innovation Expert, who treats inclusion as a
                 science, not a checkbox. As the founder of The K Methodology (TM), she bridges the gap between medical
                 precision and corporate strategy. With extensive experience across healthcare, R&amp;D, and the
@@ -112,20 +112,20 @@ export default function Founder() {
 
         <section className="section-shell pt-0 pb-8">
           <div className="founder-note-grid">
-            <figure className="founder-note-media">
+            <figure className="founder-note-media founder-note-media-text">
               <img
                 src={founderImages.noteLeft}
                 alt="Founder's note visual"
                 loading="lazy"
-                className="founder-note-image"
+                className="founder-note-image founder-note-image-text"
               />
             </figure>
-            <figure className="founder-note-media">
+            <figure className="founder-note-media founder-note-media-collage">
               <img
                 src={founderImages.noteRight}
                 alt="Founder community collaboration visual"
                 loading="lazy"
-                className="founder-note-image"
+                className="founder-note-image founder-note-image-collage"
               />
             </figure>
           </div>
@@ -149,8 +149,8 @@ export default function Founder() {
         </section>
 
         <section className="section-shell pt-0 pb-7">
-          <figure className="founder-wide">
-            <img src={founderImages.closingWide} alt="Founder partnership moments" loading="lazy" className="founder-wide-image" />
+          <figure className="founder-wide founder-closing-wide">
+            <img src={founderImages.closingWide} alt="Founder partnership moments" loading="lazy" className="founder-wide-image founder-closing-image" />
           </figure>
         </section>
 
