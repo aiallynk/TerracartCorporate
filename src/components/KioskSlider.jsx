@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion'
 import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import PopHover from './PopHover'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -24,12 +25,14 @@ export default function KioskSlider({ slides, autoplay = true, loop = true }) {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.alt}>
-            <img src={slide.src} alt={slide.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />
-            {slide.caption ? (
-              <div className="border-t border-white/40 bg-white/80 px-4 py-3 text-sm font-medium text-[var(--tc-ink)]">
-                {slide.caption}
-              </div>
-            ) : null}
+            <PopHover className="h-full w-full overflow-hidden rounded-2xl">
+              <img src={slide.src} alt={slide.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />
+              {slide.caption ? (
+                <div className="border-t border-white/40 bg-white/80 px-4 py-3 text-sm font-medium text-[var(--tc-ink)]">
+                  {slide.caption}
+                </div>
+              ) : null}
+            </PopHover>
           </SwiperSlide>
         ))}
       </Swiper>

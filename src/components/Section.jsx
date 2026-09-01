@@ -68,8 +68,11 @@ export default function Section({
             <h2 className={`section-title ${titleClassName}`}>{title}</h2>
             {subtitle ? <p className={`mt-3 text-lg font-medium text-[var(--tc-accent-strong)] ${subtitleClassName}`}>{subtitle}</p> : null}
             <div className="mt-4 space-y-3">
-              {textContent.filter(Boolean).map((item) => (
-                <p className={`text-base leading-relaxed text-[var(--tc-muted)] ${descriptionClassName}`} key={item.slice(0, 30)}>
+              {textContent.filter(Boolean).map((item, index) => (
+                <p
+                  className={`text-base leading-relaxed text-[var(--tc-muted)] ${descriptionClassName}`}
+                  key={`${id || title}-desc-${index}`}
+                >
                   {item}
                 </p>
               ))}
@@ -101,7 +104,7 @@ export default function Section({
             transition={{ duration: 0.3, ease: 'easeOut', delay: 0.08 }}
             className={stretchMediaCard ? (matchMediaHeight ? 'md:h-full md:min-h-0' : 'h-full') : ''}
           >
-            <GlassCard className={mediaCardShape} hover={false}>
+            <GlassCard className={mediaCardShape}>
               {media?.src ? (
                 <img
                   src={media.src}

@@ -1,6 +1,13 @@
-﻿import { useMemo, useState } from 'react'
+﻿import { useMemo, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from './Button'
+
+const FIELD_LIMITS = {
+  name: 120,
+  email: 254,
+  organization: 200,
+  message: 5000,
+}
 
 const initialState = {
   name: '',
@@ -12,8 +19,10 @@ const initialState = {
 export default function ContactForm({ mode = 'home' }) {
   const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT
   const [formData, setFormData] = useState(initialState)
+  const [honeypot, setHoneypot] = useState('')
   const [status, setStatus] = useState({ type: 'idle', message: '' })
   const [submitting, setSubmitting] = useState(false)
+  const submittingRef = useRef(false)
 
   const wrapperClass = useMemo(
     () =>
@@ -41,14 +50,38 @@ export default function ContactForm({ mode = 'home' }) {
   const onSubmit = async (event) => {
     event.preventDefault()
 
-    if (!endpoint) {
+    if (submittingRef.current) return
+
+    if (honeypot) {
       setStatus({
-        type: 'error',
-        message: 'Missing VITE_FORMSPREE_ENDPOINT. Add it in your .env file to enable submissions.',
+        type: 'success',
+        message: 'Thank you. Your message has been sent. We will reach out shortly.',
       })
       return
     }
 
+    if (!endpoint) {
+      setStatus({
+        type: 'error',
+        message: 'Could not submit right now. Please email us at operations@aially.in or try again later.',
+      })
+      return
+    }
+
+    const name = formData.name.trim()
+    const email = formData.email.trim()
+    const organization = formData.organization.trim()
+    const message = formData.message.trim()
+
+    if (!name || !email || !message) {
+      setStatus({
+        type: 'error',
+        message: 'Please fill in your name, email, and message before submitting.',
+      })
+      return
+    }
+
+    submittingRef.current = true
     setSubmitting(true)
     setStatus({ type: 'idle', message: '' })
 
@@ -60,11 +93,12 @@ export default function ContactForm({ mode = 'home' }) {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          organization: formData.organization,
-          message: formData.message,
+          name,
+          email,
+          organization,
+          message,
           source: mode === 'home' ? 'home-form' : 'contact-page-form',
+          _gotcha: honeypot,
         }),
       })
 
@@ -77,12 +111,14 @@ export default function ContactForm({ mode = 'home' }) {
         message: 'Thank you. Your message has been sent. We will reach out shortly.',
       })
       setFormData(initialState)
+      setHoneypot('')
     } catch {
       setStatus({
         type: 'error',
         message: 'Could not submit right now. Please try again in a moment.',
       })
     } finally {
+      submittingRef.current = false
       setSubmitting(false)
     }
   }
@@ -97,6 +133,17 @@ export default function ContactForm({ mode = 'home' }) {
       transition={{ duration: 0.45, ease: 'easeOut' }}
       aria-label="Contact form"
     >
+      <input
+        type="text"
+        name="_gotcha"
+        value={honeypot}
+        onChange={(event) => setHoneypot(event.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="tc-honeypot"
+      />
+
       <div className="grid gap-5 md:grid-cols-2">
         <label className={labelClass}>
           <span>Name</span>
@@ -104,6 +151,7 @@ export default function ContactForm({ mode = 'home' }) {
             type="text"
             name="name"
             required
+            maxLength={FIELD_LIMITS.name}
             value={formData.name}
             onChange={onChange}
             className={fieldClass}
@@ -117,6 +165,7 @@ export default function ContactForm({ mode = 'home' }) {
             type="email"
             name="email"
             required
+            maxLength={FIELD_LIMITS.email}
             value={formData.email}
             onChange={onChange}
             className={fieldClass}
@@ -130,6 +179,7 @@ export default function ContactForm({ mode = 'home' }) {
         <input
           type="text"
           name="organization"
+          maxLength={FIELD_LIMITS.organization}
           value={formData.organization}
           onChange={onChange}
           className={fieldClass}
@@ -142,6 +192,7 @@ export default function ContactForm({ mode = 'home' }) {
         <textarea
           name="message"
           required
+          maxLength={FIELD_LIMITS.message}
           rows={mode === 'page' ? 7 : 5}
           value={formData.message}
           onChange={onChange}
@@ -151,7 +202,7 @@ export default function ContactForm({ mode = 'home' }) {
       </label>
 
       <div className="mt-7 flex flex-wrap items-center gap-4">
-        <Button size={mode === 'page' ? 'lg' : 'md'}>
+        <Button type="submit" size={mode === 'page' ? 'lg' : 'md'}>
           {submitting ? 'Submitting...' : 'Submit'}
         </Button>
         {status.type === 'success' ? (

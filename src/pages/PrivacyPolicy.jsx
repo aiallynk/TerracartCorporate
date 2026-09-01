@@ -54,6 +54,24 @@ export default function PrivacyPolicy() {
               <li>To protect against fraud, security breaches, or legal claims.</li>
             </ul>
 
+            <h2 className="pt-2 text-2xl font-semibold text-[var(--tc-ink)]">Third-Party Services</h2>
+            <p>
+              We use the following third-party services to operate the Site. These providers process data according to
+              their own privacy policies:
+            </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <strong>Formspree</strong> — processes contact form submissions (name, email, organization, and message).
+              </li>
+              <li>
+                <strong>Google Fonts</strong> — serves web fonts; your browser may share basic technical data (such as IP
+                address) with Google when fonts are loaded.
+              </li>
+              <li>
+                <strong>Cloudinary</strong> — hosts and delivers images and media used on the Site.
+              </li>
+            </ul>
+
             <h2 className="pt-2 text-2xl font-semibold text-[var(--tc-ink)]">Data Security</h2>
             <p>
               We implement industry-standard security measures designed to protect your information from unauthorized

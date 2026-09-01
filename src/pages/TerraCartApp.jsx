@@ -16,6 +16,7 @@ export default function TerraCartApp() {
           src={appPdfPath}
           title="TerraCart App PDF"
           className="terra-cart-app-pdf"
+          sandbox="allow-same-origin allow-scripts"
         />
       </div>
     </>

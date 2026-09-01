@@ -40,6 +40,7 @@ export default function Button({
   external = false,
   icon = null,
   onClick,
+  type = 'button',
   className = '',
 }) {
   const isRectButton =
@@ -96,7 +97,7 @@ export default function Button({
   }
 
   return (
-    <motion.button type="button" onClick={onClick} className={classes} {...motionProps}>
+    <motion.button type={type} onClick={onClick} className={classes} {...motionProps}>
       {content}
     </motion.button>
   )

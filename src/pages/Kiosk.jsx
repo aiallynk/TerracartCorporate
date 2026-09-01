@@ -8,6 +8,8 @@ import 'swiper/css/pagination'
 
 import Button from '../components/Button'
 
+import PopHover from '../components/PopHover'
+
 import SEO from '../components/SEO'
 
 
@@ -95,9 +97,9 @@ export default function Kiosk() {
                 {kioskSlides.map((slide) => (
 
                   <SwiperSlide key={slide.src}>
-
-                    <img src={slide.src} alt={slide.alt} loading="lazy" />
-
+                    <PopHover className="block h-full w-full overflow-hidden rounded-xl">
+                      <img src={slide.src} alt={slide.alt} loading="lazy" className="h-full w-full object-cover" />
+                    </PopHover>
                   </SwiperSlide>
 
                 ))}

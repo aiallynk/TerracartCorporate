@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Button from '../components/Button'
 import GlassCard from '../components/GlassCard'
 import LaunchSlide, { launchImageClass, launchImageFrame } from '../components/LaunchSlide'
+import PopHover from '../components/PopHover'
 import SEO from '../components/SEO'
 
 const images = {
@@ -143,14 +144,14 @@ export default function SocialChampions() {
               </div>
             </Reveal>
             <Reveal delay={0.08}>
-              <figure className="sc-hero-visual">
+              <PopHover as="figure" className="sc-hero-visual">
                 <img
                   src={images.image18}
                   alt="Social Champions concept visual"
                   loading="eager"
                   className="sc-hero-visual-img"
                 />
-              </figure>
+              </PopHover>
             </Reveal>
           </div>
         </div>
@@ -240,14 +241,14 @@ export default function SocialChampions() {
           </Reveal>
 
           <Reveal className="mt-8 md:mt-10">
-            <article className={`${launchImageFrame} mx-auto max-w-[72rem]`}>
+            <PopHover as="article" className={`${launchImageFrame} mx-auto max-w-[72rem]`}>
               <img
                 src={images.image24}
                 alt="Social champion credentials and highlights"
                 loading="lazy"
                 className="h-auto w-full rounded-2xl bg-black object-contain"
               />
-            </article>
+            </PopHover>
           </Reveal>
 
           <Reveal className="mt-8">
@@ -294,9 +295,9 @@ export default function SocialChampions() {
           </Reveal>
 
           <Reveal className="mt-8 md:mt-10">
-            <figure className="mx-auto max-w-[72rem]">
+            <PopHover as="figure" className="mx-auto max-w-[72rem]">
               <img src={images.roadmap} alt="Terra Cart Roadmap infographic" loading="lazy" className="h-auto w-full object-contain" />
-            </figure>
+            </PopHover>
           </Reveal>
         </div>
       </section>
@@ -310,14 +311,14 @@ export default function SocialChampions() {
                 <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
                   Built for Impact. Designed for Viability.
                 </h2>
-                <figure className="sc-bento-image-wrap">
+                <PopHover as="figure" className="sc-bento-image-wrap">
                   <img
                     src={images.viability}
                     alt="Built for Impact. Designed for Viability."
                     loading="lazy"
                     className="h-auto w-full object-contain"
                   />
-                </figure>
+                </PopHover>
               </GlassCard>
             </Reveal>
             <Reveal delay={0.06} className="sc-bento-benefits">
@@ -328,14 +329,14 @@ export default function SocialChampions() {
                 <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
                   Who Benefits from This Model?
                 </h2>
-                <figure className="sc-bento-image-wrap sc-bento-benefits-image-wrap">
+                <PopHover as="figure" className="sc-bento-image-wrap sc-bento-benefits-image-wrap">
                   <img
                     src={images.benefits}
                     alt="Who Benefits from This Model"
                     loading="lazy"
                     className="sc-bento-benefits-image"
                   />
-                </figure>
+                </PopHover>
                 <div className="sc-bento-benefits-cta text-center md:text-left">
                   <Button
                     to="/contact"

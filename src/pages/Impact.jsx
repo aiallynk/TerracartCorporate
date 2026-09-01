@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import GlassCard from '../components/GlassCard'
+import PopHover from '../components/PopHover'
 import SEO from '../components/SEO'
 
 const alignedWithItems = [
@@ -90,7 +91,7 @@ export default function Impact() {
 
         {/* Companies We Work With */}
         <section className="section-shell impact-companies-section pb-4">
-          <article className="impact-proof-block impact-companies-block">
+          <PopHover as="article" className="impact-proof-block impact-companies-block">
             <h3 className="impact-proof-heading impact-companies-heading">{companiesWeWorkWith.title}</h3>
             <img
               src={companiesWeWorkWith.image}
@@ -98,7 +99,7 @@ export default function Impact() {
               loading="eager"
               className="impact-inline-image impact-companies-image mt-4"
             />
-          </article>
+          </PopHover>
         </section>
 
         {/* Hero */}
@@ -201,7 +202,8 @@ export default function Impact() {
           <div className="space-y-10">
 
             {proofBlocks.map((item) => (
-              <article
+              <PopHover
+                as="article"
                 key={item.title}
                 className={`impact-proof-block${item.featured ? ' impact-proof-block--featured' : ''}`}
               >
@@ -217,7 +219,7 @@ export default function Impact() {
                   loading="lazy"
                   className={`impact-inline-image mt-4${item.featured ? ' impact-proof-image--featured' : ''}`}
                 />
-              </article>
+              </PopHover>
             ))}
 
           </div>

@@ -1,4 +1,5 @@
 import Button from '../components/Button'
+import PopHover from '../components/PopHover'
 import SEO from '../components/SEO'
 
 const founderImages = {
@@ -99,47 +100,47 @@ export default function Founder() {
               </div>
             </article>
 
-            <figure className="founder-media">
+            <PopHover as="figure" className="founder-media">
               <img
                 src={founderImages.hero}
                 alt="Dr Sonam Kapse addressing an audience"
                 loading="lazy"
                 className="founder-full-image founder-hero-image"
               />
-            </figure>
+            </PopHover>
           </div>
         </section>
 
         <section className="section-shell pt-0 pb-8">
           <div className="founder-note-grid">
-            <figure className="founder-note-media founder-note-media-text">
+            <PopHover as="figure" className="founder-note-media founder-note-media-text">
               <img
                 src={founderImages.noteLeft}
                 alt="Founder's note visual"
                 loading="lazy"
                 className="founder-note-image founder-note-image-text"
               />
-            </figure>
-            <figure className="founder-note-media founder-note-media-collage">
+            </PopHover>
+            <PopHover as="figure" className="founder-note-media founder-note-media-collage">
               <img
                 src={founderImages.noteRight}
                 alt="Founder community collaboration visual"
                 loading="lazy"
                 className="founder-note-image founder-note-image-collage"
               />
-            </figure>
+            </PopHover>
           </div>
         </section>
 
         <section className="section-shell pt-0 pb-6">
-          <figure className="founder-wide">
+          <PopHover as="figure" className="founder-wide">
             <img
               src={founderImages.sectionWide}
               alt="Founder leadership banner"
               loading="lazy"
               className="founder-wide-image founder-wide-image-flat"
             />
-          </figure>
+          </PopHover>
         </section>
 
         <section className="section-shell pt-0 pb-5">
@@ -149,9 +150,9 @@ export default function Founder() {
         </section>
 
         <section className="section-shell pt-0 pb-7">
-          <figure className="founder-wide founder-closing-wide">
+          <PopHover as="figure" className="founder-wide founder-closing-wide">
             <img src={founderImages.closingWide} alt="Founder partnership moments" loading="lazy" className="founder-wide-image founder-closing-image" />
-          </figure>
+          </PopHover>
         </section>
 
         <section className="section-shell pt-0 pb-10">

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import PopHover from '../components/PopHover'
 import SEO from '../components/SEO'
 
 const imcImages = {
@@ -33,13 +34,14 @@ export default function IndiaMilletsCo() {
       <div className="imc-page-surface">
         <section className="imc-logo-surface section-shell">
           <motion.div
-            className="imc-logo-wrap"
             variants={fadeUp}
             initial="hidden"
             animate="show"
             transition={{ duration: 0.45, ease: 'easeOut' }}
           >
-            <img src={imcImages.logo} alt="India Millets Co logo" loading="lazy" className="imc-logo" />
+            <PopHover as="div" className="imc-logo-wrap">
+              <img src={imcImages.logo} alt="India Millets Co logo" loading="lazy" className="imc-logo" />
+            </PopHover>
           </motion.div>
         </section>
 
@@ -98,9 +100,9 @@ export default function IndiaMilletsCo() {
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
           >
             {imcImages.collage.map((src, index) => (
-              <figure className="imc-collage-media" key={src}>
+              <PopHover as="figure" className="imc-collage-media" key={src}>
                 <img src={src} alt={`India Millets collage image ${index + 1}`} loading="lazy" className="imc-collage-image" />
-              </figure>
+              </PopHover>
             ))}
           </motion.div>
 
@@ -123,14 +125,14 @@ export default function IndiaMilletsCo() {
             transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             {imcImages.showcase.map((src, index) => (
-              <figure className="imc-showcase-media" key={src}>
+              <PopHover as="figure" className="imc-showcase-media" key={src}>
                 <img
                   src={src}
                   alt={`India Millets showcase image ${index + 1}`}
                   loading="lazy"
                   className="imc-showcase-image"
                 />
-              </figure>
+              </PopHover>
             ))}
           </motion.div>
 
@@ -143,7 +145,9 @@ export default function IndiaMilletsCo() {
             transition={{ duration: 0.42, ease: 'easeOut' }}
           >
             <h3 className="imc-companies-title">Companies We Work With</h3>
-            <img src={imcImages.companies} alt="Companies we work with" loading="lazy" className="imc-companies-image" />
+            <PopHover as="div" className="imc-companies-image-wrap">
+              <img src={imcImages.companies} alt="Companies we work with" loading="lazy" className="imc-companies-image" />
+            </PopHover>
           </motion.div>
         </section>
       </div>

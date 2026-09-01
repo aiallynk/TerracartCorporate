@@ -1,4 +1,5 @@
 import GlassCard from './GlassCard'
+import PopHover from './PopHover'
 
 export const launchSlideShell =
   'mx-auto flex max-w-[120rem] flex-col gap-8 lg:flex-row lg:items-stretch lg:gap-6 xl:gap-8'
@@ -34,9 +35,9 @@ export default function LaunchSlide({
   )
 
   const imageBlock = (
-    <article className={imageFrameClassName}>
+    <PopHover as="article" className={imageFrameClassName}>
       <img src={imageSrc} alt={imageAlt} loading="lazy" className={imageClassName} />
-    </article>
+    </PopHover>
   )
 
   return (

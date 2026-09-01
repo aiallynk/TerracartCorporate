@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Button from '../components/Button'
 import GlassCard from '../components/GlassCard'
+import PopHover, { popHoverTransition, popHoverWhileHover } from '../components/PopHover'
 import SEO from '../components/SEO'
 import Section from '../components/Section'
 
@@ -153,7 +154,7 @@ export default function Home() {
                   </p>
                 </GlassCard>
 
-                <article className={`overflow-hidden p-2 ${physicalAbilitiesImageCardClass}`}>
+                <PopHover as="article" className={`overflow-hidden p-2 ${physicalAbilitiesImageCardClass}`}>
                   <div className="h-[400px] w-full overflow-y-auto rounded-2xl bg-white md:h-[620px]">
                     <img
                       src={images.physicalAbilitiesTwo}
@@ -162,11 +163,11 @@ export default function Home() {
                       className="w-full object-contain object-top"
                     />
                   </div>
-                </article>
+                </PopHover>
               </div>
 
               <div className="space-y-7">
-                <article className={`overflow-hidden p-2 ${physicalAbilitiesImageCardClass}`}>
+                <PopHover as="article" className={`overflow-hidden p-2 ${physicalAbilitiesImageCardClass}`}>
                   <div className="h-[400px] w-full overflow-y-auto rounded-2xl bg-white md:h-[620px]">
                     <img
                       src={images.physicalAbilities}
@@ -175,7 +176,7 @@ export default function Home() {
                       className="w-full object-contain object-top"
                     />
                   </div>
-                </article>
+                </PopHover>
 
                 <GlassCard className="launch-event-plaque !rounded-[1.1rem] text-center md:px-9 md:py-10">
                   <h2 className="launch-event-plaque-title text-center !text-[clamp(2.2rem,3.9vw,3.5rem)]">
@@ -200,36 +201,42 @@ export default function Home() {
         </section>
 
         <motion.section
-          className="collage-kenburns relative right-1/2 left-1/2 -mr-[50vw] -ml-[50vw] w-screen overflow-hidden"
+          className="collage-kenburns relative right-1/2 left-1/2 -mr-[50vw] -ml-[50vw] w-screen"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.22 }}
         >
-          <motion.img
-            src={images.mission}
-            alt="Divyang jan collage"
-            loading="lazy"
-            className="block h-auto w-full origin-center will-change-transform"
-            variants={{
-              hidden: { opacity: 0, scale: 1.08 },
-              visible: {
-                opacity: 1,
-                scale: 1,
-                transition: { duration: 1.15, ease: [0.22, 1, 0.36, 1] },
-              },
-            }}
-          />
           <motion.div
-            aria-hidden="true"
-            className="collage-kenburns-vignette pointer-events-none absolute inset-0"
-            variants={{
-              hidden: { opacity: 1 },
-              visible: {
-                opacity: 0,
-                transition: { duration: 1.25, ease: 'easeOut', delay: 0.15 },
-              },
-            }}
-          />
+            className="relative overflow-hidden"
+            whileHover={popHoverWhileHover}
+            transition={popHoverTransition}
+          >
+            <motion.img
+              src={images.mission}
+              alt="Divyang jan collage"
+              loading="lazy"
+              className="block h-auto w-full origin-center will-change-transform"
+              variants={{
+                hidden: { opacity: 0, scale: 1.08 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  transition: { duration: 1.15, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+            />
+            <motion.div
+              aria-hidden="true"
+              className="collage-kenburns-vignette pointer-events-none absolute inset-0"
+              variants={{
+                hidden: { opacity: 1 },
+                visible: {
+                  opacity: 0,
+                  transition: { duration: 1.25, ease: 'easeOut', delay: 0.15 },
+                },
+              }}
+            />
+          </motion.div>
         </motion.section>
 
         <Section
@@ -273,10 +280,12 @@ export default function Home() {
           <div className="tc-menu-marquee-wrap mt-6" aria-label="Terra Cart menu gallery">
             <div className="tc-menu-marquee-track">
               {[...menuShowcaseImages, ...menuShowcaseImages].map((item, index) => (
-                <article
+                <motion.article
                   key={`${item.src}-${index}`}
                   className="tc-menu-marquee-item"
                   aria-hidden={index >= menuShowcaseImages.length}
+                  whileHover={popHoverWhileHover}
+                  transition={popHoverTransition}
                 >
                   <img
                     src={item.src}
@@ -285,13 +294,13 @@ export default function Home() {
                     draggable="false"
                     className="h-full w-full rounded-[1.1rem] object-cover"
                   />
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
 
           <div className="mx-auto mt-8 max-w-5xl text-center">
-            <Button href={menuPdfPath} external variant="plaque" size="plaque" className="min-w-[22rem] md:min-w-[26rem]">
+            <Button href={menuPdfPath} variant="plaque" size="plaque" className="min-w-[22rem] md:min-w-[26rem]">
               Terra Cart Menu <span aria-hidden="true" className="text-lg">-&gt;</span>
             </Button>
           </div>
