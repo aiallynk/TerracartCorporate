@@ -256,7 +256,7 @@ export default function Home() {
           media={{
             src: images.vision,
             alt: 'Our Vision — Terra Cart inclusive entrepreneurship',
-            className: 'bg-white object-cover object-top',
+            className: 'bg-white object-contain object-center md:object-cover md:object-top',
           }}
           textCardClassName="mission-dark-card !rounded-[1.1rem] text-center md:px-9 !py-5 md:!py-6"
           mediaCardClassName={visionMediaCardClass}

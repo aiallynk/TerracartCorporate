@@ -227,7 +227,7 @@ export default function Impact() {
 
         <section className="section-shell pt-0 pb-10">
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="tc-btn-group flex flex-wrap items-center justify-center gap-4">
 
             <Link to="/contact" className="what-is-plaque-btn focus-ring">
               <span className="what-is-title">Contact Us</span>

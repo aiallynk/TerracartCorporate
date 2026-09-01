@@ -39,15 +39,30 @@ body,
   min-height: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   html {
     zoom: var(--tc-global-scale);
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1279px) {
   html {
     zoom: 1;
+  }
+
+  html,
+  body,
+  .site-shell {
+    overflow-x: hidden;
+  }
+
+  .nav-island-underlay {
+    margin-top: -4.75rem;
+    padding-top: 4.75rem;
+  }
+
+  .nav-island-underlay::before {
+    height: 4.75rem;
   }
 }
 
@@ -226,10 +241,11 @@ h6 {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 100svh;
-  margin-top: -6rem;
+  margin-top: -4.75rem;
   overflow: hidden;
   background: #000000;
+  height: clamp(15rem, 54vw, 34rem);
+  max-height: 70svh;
 }
 
 .kiosk-hero-image {
@@ -238,22 +254,37 @@ h6 {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .kiosk-hero-surface {
+    height: clamp(26rem, 54svh, 44rem);
+    max-height: 66svh;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .kiosk-hero-surface {
+    margin-top: -6rem;
     height: calc(100svh / var(--tc-global-scale));
+    max-height: none;
+  }
+
+  .kiosk-hero-image {
+    object-fit: cover;
+    object-position: top center;
   }
 }
 
 .welcome-video-surface {
   position: relative;
   width: 100%;
-  height: 100svh;
   overflow: hidden;
   background: #000000;
+  height: clamp(15rem, 54vw, 34rem);
+  max-height: 70svh;
 }
 
 .welcome-video {
@@ -262,13 +293,26 @@ h6 {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .welcome-video-surface {
+    height: clamp(26rem, 54svh, 44rem);
+    max-height: 66svh;
+  }
+}
+
+@media screen and (min-width: 1280px) {
   .welcome-video-surface {
     height: calc(100svh / var(--tc-global-scale));
+    max-height: none;
+  }
+
+  .welcome-video {
+    object-fit: cover;
+    object-position: top center;
   }
 }
 
@@ -762,7 +806,7 @@ h6 {
   font-family: var(--tc-font-heading);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 600;
-  color: #f7efe3;
+  color: rgba(232, 198, 140, 0.96);
 }
 
 .sc-dual-rule {
@@ -846,6 +890,19 @@ h6 {
 
 .sc-legacy-plaque .launch-event-plaque-body {
   color: #e8dccf;
+}
+
+.sc-resource-btn {
+  color: rgba(232, 198, 140, 0.96) !important;
+  text-shadow: none !important;
+  font-family: var(--tc-font-heading);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.sc-resource-btn:hover {
+  color: rgba(255, 236, 196, 0.98) !important;
+  text-shadow: none !important;
 }
 
 .sc-credentials-frame {
@@ -938,6 +995,39 @@ h6 {
   margin-inline: auto;
 }
 
+.sc-bento-benefits-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: clamp(28rem, 52vw, 40rem);
+}
+
+.sc-bento-benefits-image-wrap {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  min-height: clamp(20rem, 44vw, 30rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem;
+}
+
+.sc-bento-benefits-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: clamp(18rem, 40vw, 28rem);
+  object-fit: contain;
+  object-position: center;
+}
+
+.sc-bento-benefits-cta {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
 .sc-closing-cta {
   margin-inline: auto;
   max-width: 52rem;
@@ -977,8 +1067,16 @@ h6 {
   }
 
   .sc-bento-grid {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1fr 1.15fr;
     align-items: stretch;
+  }
+
+  .sc-bento-benefits-image-wrap {
+    min-height: clamp(22rem, 34vw, 32rem);
+  }
+
+  .sc-bento-benefits-image {
+    min-height: clamp(20rem, 30vw, 28rem);
   }
 
   .sc-bento-image-wrap-compact {
@@ -1777,6 +1875,212 @@ h6 {
 }
 
 @media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-shell {
+    overflow-x: hidden;
+  }
+
+  .section-shell {
+    padding-inline: 0.875rem;
+    padding-block: 2.25rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.55rem, 6.2vw, 2rem);
+    line-height: 1.18;
+  }
+
+  .nav-island-underlay {
+    margin-top: -4.75rem;
+    padding-top: 4.75rem;
+  }
+
+  .nav-island-underlay::before {
+    height: 4.75rem;
+  }
+
+  #vision .overflow-hidden img {
+    min-height: 15rem;
+    max-height: none;
+  }
+
+  .tc-responsive-btn {
+    width: 100%;
+    max-width: 20rem;
+    min-width: 0 !important;
+    margin-inline: auto;
+    padding-left: 1.15rem !important;
+    padding-right: 1.15rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .sc-hero-copy .tc-responsive-btn {
+    max-width: 100%;
+  }
+
+  .tc-btn-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+
+  .tc-btn-group .tc-responsive-btn,
+  .tc-btn-group .what-is-plaque-btn {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0 !important;
+  }
+
+  .what-is-plaque-btn {
+    min-width: 0;
+    width: 100%;
+    padding: 1.1rem 1.25rem 1.2rem;
+  }
+
+  .what-is-plaque-btn .what-is-title {
+    font-size: clamp(1.25rem, 5.2vw, 1.55rem);
+  }
+
+  .what-is-band {
+    padding-inline: 0.875rem;
+  }
+
+  .collage-kenburns {
+    position: relative;
+    right: auto;
+    left: auto;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .sc-hero-shell {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sc-hero-grid {
+    min-height: 0;
+    gap: 1.5rem;
+  }
+
+  .sc-hero-title {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .sc-hero-lead {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+    line-height: 1.65;
+  }
+
+  .sc-hero-visual {
+    min-height: 0;
+  }
+
+  .sc-hero-visual-img {
+    transform: scale(1);
+  }
+
+  .sc-section-heading {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .sc-archetype-card {
+    min-height: 0;
+  }
+
+  .impact-intro-lead {
+    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
+  }
+
+  .impact-intro-subhead {
+    font-size: clamp(1.1rem, 4.5vw, 1.28rem);
+  }
+
+  .impact-intro-body,
+  .impact-intro-list {
+    font-size: clamp(1.02rem, 4vw, 1.15rem);
+  }
+
+  .impact-stat-value {
+    font-size: clamp(2.15rem, 9vw, 2.75rem);
+  }
+
+  .impact-stat-label {
+    font-size: clamp(0.92rem, 3.8vw, 1rem);
+  }
+
+  .impact-stat-card {
+    min-height: 0;
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .impact-institution-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+  }
+
+  .impact-institution-body {
+    font-size: clamp(1rem, 4vw, 1.12rem);
+    max-width: 100%;
+  }
+
+  .impact-institution-card {
+    min-height: 0;
+    padding: 1.5rem 1.15rem !important;
+  }
+
+  .impact-companies-heading {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .impact-companies-image {
+    min-height: clamp(12rem, 52vw, 20rem);
+  }
+
+  .impact-proof-heading--featured {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .impact-proof-image--featured {
+    min-height: clamp(14rem, 58vw, 24rem);
+  }
+
+  .impact-proof-block--featured {
+    padding: 1.25rem;
+  }
+
+  .kiosk-intro-card {
+    padding: 1.25rem !important;
+  }
+
+  .kiosk-intro-title {
+    font-size: clamp(1.55rem, 6vw, 2rem) !important;
+  }
+
+  .kiosk-intro-body {
+    font-size: clamp(0.98rem, 4vw, 1.08rem);
+  }
+
+  .launch-event-plaque-title {
+    font-size: clamp(1.55rem, 6vw, 2.15rem);
+  }
+
+  .launch-event-plaque-body {
+    font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+  }
+
+  .launch-event-plaque-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+  }
+
   .founder-note-media {
     height: clamp(26rem, 88vw, 36rem);
   }
@@ -1798,11 +2102,36 @@ h6 {
   .imc-showcase-grid {
     margin-top: 1.75rem;
   }
-}
 
-@media (max-width: 767px) {
   .tc-kiosk-swiper .swiper-pagination-bullet {
     width: 1.18rem;
+  }
+
+  .tc-menu-marquee-item {
+    flex-basis: clamp(170px, 58vw, 220px);
+  }
+
+  .tc-download-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tc-download-grid .tc-responsive-btn {
+    max-width: 100%;
+  }
+
+  footer {
+    padding-inline: 1rem;
+  }
+
+  footer h3 {
+    font-size: 1.35rem;
+  }
+
+  footer p,
+  footer li,
+  footer a {
+    font-size: 1rem;
   }
 }
 

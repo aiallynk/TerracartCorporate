@@ -137,7 +137,7 @@ export default function Kiosk() {
 
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <div className="tc-btn-group mt-6 flex flex-wrap items-center justify-center gap-4">
 
               <Button to="/contact">Contact Us</Button>
 

@@ -34,10 +34,17 @@ export default function Section({
   const stretchMediaCard = !isStack && (!compact || matchMediaHeight)
   const textCardShape = `${textCardClassName} ${stretchTextCard ? 'h-full' : ''}`
   const mediaCardShape = `overflow-hidden p-2 ${mediaCardClassName} ${
-    stretchMediaCard ? (matchMediaHeight ? 'relative h-full min-h-0' : 'flex h-full') : ''
+    stretchMediaCard
+      ? matchMediaHeight
+        ? 'relative min-h-[15rem] md:min-h-0 md:h-full'
+        : 'flex h-full'
+      : ''
   }`
   const mediaImageClass = media?.className || (isStack ? 'aspect-[16/10] object-cover' : 'h-full object-cover')
-  const mediaImageLayoutClass = matchMediaHeight && !isStack ? 'absolute inset-0 h-full w-full' : 'h-full w-full'
+  const mediaImageLayoutClass =
+    matchMediaHeight && !isStack
+      ? 'h-auto w-full md:absolute md:inset-0 md:h-full md:w-full'
+      : 'h-full w-full'
   const gridAlignClass = compact && !matchMediaHeight ? 'items-start' : 'items-stretch'
 
   return (
@@ -92,7 +99,7 @@ export default function Section({
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.3, ease: 'easeOut', delay: 0.08 }}
-            className={stretchMediaCard ? (matchMediaHeight ? 'h-full min-h-0' : 'h-full') : ''}
+            className={stretchMediaCard ? (matchMediaHeight ? 'md:h-full md:min-h-0' : 'h-full') : ''}
           >
             <GlassCard className={mediaCardShape} hover={false}>
               {media?.src ? (

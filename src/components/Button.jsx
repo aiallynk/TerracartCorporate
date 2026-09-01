@@ -56,7 +56,7 @@ export default function Button({
       : isRectButton
         ? 'tracking-[0.16em] uppercase'
         : 'tracking-wide'
-  const classes = `focus-ring inline-flex items-center justify-center gap-2 ${roundedClass} font-semibold transition ${trackingClass} ${variants[variant]} ${sizes[effectiveSize]} ${className}`
+  const classes = `focus-ring tc-responsive-btn inline-flex items-center justify-center gap-2 ${roundedClass} font-semibold transition ${trackingClass} ${variants[variant]} ${sizes[effectiveSize]} ${className}`
 
   const content = (
     <>

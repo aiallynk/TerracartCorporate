@@ -12,7 +12,7 @@ export default function App() {
       <div className="site-glass-backdrop" aria-hidden="true" />
       <Navbar />
       <div className={`site-content-layer text-[var(--tc-ink)] ${isTerraCartAppPage ? '' : 'min-h-screen'}`}>
-        <main className="pt-24">
+        <main className="pt-[4.75rem] xl:pt-24">
           <AppRoutes />
         </main>
         <Footer />

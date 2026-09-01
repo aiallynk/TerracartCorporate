@@ -131,7 +131,12 @@ export default function SocialChampions() {
                   enterprise where impact and profitability coexist.
                 </p>
                 <div className="mt-8">
-                  <Button to="/contact" variant="plaque" size="plaque" className="min-w-[22rem] md:min-w-[26rem]">
+                  <Button
+                    to="/contact"
+                    variant="plaqueGold"
+                    size="plaque"
+                    className="sc-resource-btn min-w-[22rem] md:min-w-[26rem] text-center"
+                  >
                     Join as Social Champion
                   </Button>
                 </div>
@@ -247,15 +252,15 @@ export default function SocialChampions() {
 
           <Reveal className="mt-8">
             <p className="sc-section-eyebrow text-center">Resources</p>
-            <div className="tc-download-grid mt-4">
+            <div className="tc-download-grid tc-btn-group mt-4">
               {dmfDownloads.map((item) => (
                 <Button
                   key={item.href}
                   href={item.href}
                   external
-                  variant="download"
-                  size="download"
-                  className="min-w-[14rem] md:min-w-[16.8rem]"
+                  variant="plaqueGold"
+                  size="plaqueLight"
+                  className="sc-resource-btn min-w-[14rem] md:min-w-[16.8rem] text-center"
                 >
                   {item.label}
                 </Button>
@@ -316,20 +321,28 @@ export default function SocialChampions() {
               </GlassCard>
             </Reveal>
             <Reveal delay={0.06} className="sc-bento-benefits">
-              <GlassCard className="sc-bento-card sc-bento-card-accent !rounded-[1.1rem] !p-4 md:!p-5" hover={false}>
+              <GlassCard
+                className="sc-bento-card sc-bento-card-accent sc-bento-benefits-card !rounded-[1.1rem] !p-4 md:!p-5"
+                hover={false}
+              >
                 <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
                   Who Benefits from This Model?
                 </h2>
-                <figure className="sc-bento-image-wrap sc-bento-image-wrap-compact">
+                <figure className="sc-bento-image-wrap sc-bento-benefits-image-wrap">
                   <img
                     src={images.benefits}
                     alt="Who Benefits from This Model"
                     loading="lazy"
-                    className="h-auto w-full object-contain"
+                    className="sc-bento-benefits-image"
                   />
                 </figure>
-                <div className="mt-6 text-center md:text-left">
-                  <Button to="/contact" variant="terracart" size="terracart" className="min-w-[16rem]">
+                <div className="sc-bento-benefits-cta text-center md:text-left">
+                  <Button
+                    to="/contact"
+                    variant="plaqueGold"
+                    size="plaqueLight"
+                    className="sc-resource-btn min-w-[16rem] text-center"
+                  >
                     Own a Terra Cart
                   </Button>
                 </div>
@@ -349,7 +362,7 @@ export default function SocialChampions() {
               <p className="sc-dual-body mx-auto mt-4 max-w-[36rem] text-center">
                 Build enterprises where dignity, ownership, and measurable impact grow together.
               </p>
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+              <div className="tc-btn-group mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6">
                 <Button to="/contact" variant="plaqueLight" size="plaqueLight" className="min-w-[16rem]">
                   Contact Us
                 </Button>

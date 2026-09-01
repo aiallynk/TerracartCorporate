@@ -62,14 +62,14 @@ export default function Navbar() {
       className="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent transition-all duration-300"
     >
       <div
-        className={`mx-auto w-full max-w-[130rem] px-4 transition-all duration-300 md:px-7 ${
+        className={`mx-auto w-full max-w-[130rem] px-4 transition-all duration-300 xl:px-7 ${
           scrolled ? 'py-2.5' : 'py-3.5'
         }`}
       >
-        <div className="relative flex items-center justify-start md:justify-center">
+        <div className="relative flex items-center justify-start xl:justify-center">
           <button
             type="button"
-            className={`focus-ring inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.74)] text-[rgba(71,45,30,0.95)] shadow-[0_10px_24px_rgba(46,31,20,0.16)] backdrop-blur-2xl transition-all duration-300 md:hidden ${
+            className={`focus-ring inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.74)] text-[rgba(71,45,30,0.95)] shadow-[0_10px_24px_rgba(46,31,20,0.16)] backdrop-blur-2xl transition-all duration-300 xl:hidden ${
               open
                 ? 'bg-[linear-gradient(150deg,rgba(255,255,255,0.9),rgba(249,242,235,0.72))]'
                 : 'bg-[linear-gradient(150deg,rgba(255,255,255,0.82),rgba(248,240,233,0.62))]'
@@ -98,7 +98,7 @@ export default function Navbar() {
             </span>
           </button>
 
-          <nav className="hidden items-center justify-center md:flex" aria-label="Primary">
+          <nav className="hidden items-center justify-center xl:flex" aria-label="Primary">
             <div className="tc-nav-center">
               {links.map((link) => (
                 <NavLink key={link.to} to={link.to} end={link.to === '/'} className="focus-ring rounded-xl">
@@ -130,7 +130,7 @@ export default function Navbar() {
             initial="hidden"
             animate="show"
             exit="exit"
-            className="overflow-hidden border-t border-[rgba(255,255,255,0.66)] bg-[rgba(255,255,255,0.55)] px-3 pb-3 pt-2 md:hidden"
+            className="overflow-hidden border-t border-[rgba(255,255,255,0.66)] bg-[rgba(255,255,255,0.55)] px-3 pb-3 pt-2 xl:hidden"
           >
             <motion.div className="mx-auto max-w-[130rem] overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.78)] bg-[linear-gradient(145deg,rgba(255,255,255,0.86),rgba(246,238,230,0.66))] shadow-[0_18px_40px_rgba(55,35,21,0.16)] backdrop-blur-2xl">
               <motion.nav className="flex flex-col gap-1.5 p-3" aria-label="Mobile primary">
