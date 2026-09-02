@@ -1,3 +1,4 @@
+import PdfViewer from '../components/PdfViewer'
 import SEO from '../components/SEO'
 
 const appPdfPath = '/PDFs/TerraCartApp.pdf'
@@ -12,11 +13,7 @@ export default function TerraCartApp() {
       />
 
       <div className="nav-island-underlay w-full bg-white">
-        <iframe
-          src={appPdfPath}
-          title="TerraCart App PDF"
-          className="terra-cart-app-pdf"
-        />
+        <PdfViewer src={appPdfPath} title="TerraCart App PDF" />
       </div>
     </>
   )
