@@ -26,7 +26,7 @@ export default function LaunchSlide({
   plaqueClassName = launchPlaqueClass,
 }) {
   const textBlock = (
-    <GlassCard className={plaqueClassName} hover={false}>
+    <GlassCard className={plaqueClassName}>
       <p className="launch-event-plaque-eyebrow">{eyebrow}</p>
       <Heading className="launch-event-plaque-title">{title}</Heading>
       <div className="launch-event-plaque-rule" aria-hidden="true" />

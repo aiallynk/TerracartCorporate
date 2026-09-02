@@ -173,7 +173,7 @@ export default function SocialChampions() {
           >
             {championArchetypes.map((item) => (
               <motion.div key={item.title} variants={reveal}>
-                <GlassCard className="mission-dark-card sc-archetype-card !rounded-[1.15rem] !p-6 md:!p-8" hover={false}>
+                <GlassCard className="mission-dark-card sc-archetype-card !rounded-[1.15rem] !p-6 md:!p-8">
                   <ChampionIcon>{item.icon}</ChampionIcon>
                   <h3 className="sc-archetype-title">{item.title}</h3>
                   <p className="sc-archetype-line">{item.line}</p>
@@ -189,7 +189,7 @@ export default function SocialChampions() {
         <div className="section-shell pb-10 md:pb-14">
           <div className="sc-dual-grid">
             <Reveal>
-              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]" hover={false}>
+              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]">
                 <h2 className="sc-dual-title">What Social Champions Do</h2>
                 <div className="launch-event-plaque-rule sc-dual-rule" aria-hidden="true" />
                 <p className="sc-dual-body">
@@ -206,7 +206,7 @@ export default function SocialChampions() {
               </GlassCard>
             </Reveal>
             <Reveal delay={0.06}>
-              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]" hover={false}>
+              <GlassCard className="mission-dark-card sc-dual-card !rounded-[1.1rem]">
                 <h2 className="sc-dual-title">Why They Join Terra Cart</h2>
                 <div className="launch-event-plaque-rule sc-dual-rule" aria-hidden="true" />
                 <p className="sc-dual-body">
@@ -307,7 +307,7 @@ export default function SocialChampions() {
         <div className="section-shell py-10 md:py-14">
           <div className="sc-bento-grid">
             <Reveal className="sc-bento-viability">
-              <GlassCard className="sc-bento-card !rounded-[1.1rem] !p-4 md:!p-5" hover={false}>
+              <GlassCard className="sc-bento-card !rounded-[1.1rem] !p-4 md:!p-5">
                 <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
                   Built for Impact. Designed for Viability.
                 </h2>
@@ -324,7 +324,6 @@ export default function SocialChampions() {
             <Reveal delay={0.06} className="sc-bento-benefits">
               <GlassCard
                 className="sc-bento-card sc-bento-card-accent sc-bento-benefits-card !rounded-[1.1rem] !p-4 md:!p-5"
-                hover={false}
               >
                 <h2 className="section-title sc-bento-title mb-4 text-center md:text-left">
                   Who Benefits from This Model?
@@ -357,7 +356,7 @@ export default function SocialChampions() {
       <section className="social-band-light social-band-divider">
         <div className="section-shell py-10 md:pb-14">
           <Reveal>
-            <GlassCard className="mission-dark-card sc-dual-card sc-closing-cta !rounded-[1.1rem]" hover={false}>
+            <GlassCard className="mission-dark-card sc-dual-card sc-closing-cta !rounded-[1.1rem]">
               <h2 className="sc-dual-title text-center">Partner With Terra Cart</h2>
               <div className="launch-event-plaque-rule sc-dual-rule mx-auto" aria-hidden="true" />
               <p className="sc-dual-body mx-auto mt-4 max-w-[36rem] text-center">

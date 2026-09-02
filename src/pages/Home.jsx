@@ -1,5 +1,5 @@
-﻿import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
+import BackgroundVideo from '../components/BackgroundVideo'
 import Button from '../components/Button'
 import GlassCard from '../components/GlassCard'
 import PopHover, { popHoverTransition, popHoverWhileHover } from '../components/PopHover'
@@ -39,47 +39,8 @@ const menuShowcaseImages = [
 const HERO_PLAYED_KEY = 'tc-hero-played'
 const WELCOME_PLAYED_KEY = 'tc-welcome-played'
 
-function freezeVideoAtEnd(video) {
-  if (!video) return
-  video.pause()
-  if (Number.isFinite(video.duration) && video.duration > 0) {
-    video.currentTime = Math.max(0, video.duration - 0.05)
-  }
-}
-
-function usePlayOnceVideo(videoRef, storageKey) {
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const showLastFrame = () => freezeVideoAtEnd(video)
-
-    if (sessionStorage.getItem(storageKey) === '1') {
-      video.autoplay = false
-      if (video.readyState >= 1) showLastFrame()
-      else video.addEventListener('loadedmetadata', showLastFrame, { once: true })
-    }
-
-    const onEnded = () => {
-      sessionStorage.setItem(storageKey, '1')
-      freezeVideoAtEnd(video)
-    }
-
-    video.addEventListener('ended', onEnded)
-    return () => {
-      video.removeEventListener('ended', onEnded)
-      video.removeEventListener('loadedmetadata', showLastFrame)
-    }
-  }, [videoRef, storageKey])
-}
-
 export default function Home() {
   const menuPdfPath = '/PDFs/TerraCartMenu.pdf'
-  const heroVideoRef = useRef(null)
-  const welcomeVideoRef = useRef(null)
-
-  usePlayOnceVideo(heroVideoRef, HERO_PLAYED_KEY)
-  usePlayOnceVideo(welcomeVideoRef, WELCOME_PLAYED_KEY)
 
   return (
     <>
@@ -89,19 +50,14 @@ export default function Home() {
         canonical="/"
       />
 
-      <section className="kiosk-hero-surface">
-        <video
-          ref={heroVideoRef}
-          className="kiosk-hero-image"
-          autoPlay
-          muted
-          playsInline
-          poster={images.landingHero}
-          aria-label="Terra Cart inclusive kiosk"
-        >
-          <source src={images.landingVideo} type="video/mp4" />
-        </video>
-      </section>
+      <BackgroundVideo
+        videoSrc={images.landingVideo}
+        posterSrc={images.landingHero}
+        storageKey={HERO_PLAYED_KEY}
+        surfaceClassName="kiosk-hero-surface"
+        mediaClassName="kiosk-hero-image"
+        ariaLabel="Terra Cart inclusive kiosk"
+      />
 
       <section className="what-is-band" aria-label="What is TerraCart ?">
         <div className="what-is-plaque">
@@ -110,18 +66,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="welcome-video-surface">
-        <video
-          ref={welcomeVideoRef}
-          className="welcome-video"
-          autoPlay
-          muted
-          playsInline
-          aria-label="Terra Cart central idea with workers"
-        >
-          <source src={images.welcomeVideo} type="video/mp4" />
-        </video>
-      </section>
+      <BackgroundVideo
+        videoSrc={images.welcomeVideo}
+        storageKey={WELCOME_PLAYED_KEY}
+        surfaceClassName="welcome-video-surface"
+        mediaClassName="welcome-video"
+        ariaLabel="Terra Cart central idea with workers"
+      />
 
       <div className="home-panels">
         <Section
